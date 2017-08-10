@@ -6,7 +6,7 @@ import (
 
 type User struct {
 	Id				bson.ObjectId		`bson:"_id"`
-	Username 		string 				`bson:"username"`
+	Name 			string 				`bson:"name"`
 	PassHash 		string 				`bson:"passHash"`
 	Goals 			[]bson.ObjectId 	`bson:"goals"`
 	CheckerOf		[]bson.ObjectId 	`bson:"checkerOf"`
