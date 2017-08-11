@@ -4,7 +4,7 @@ import (
 	"gopkg.in/mgo.v2"
 )
 
-const DBname = "blogServer"
+const DBname = "onePercent"
 
 func GetMongoSession() (*mgo.Session){
 	session, err := mgo.Dial("mongodb://localhost")
@@ -21,11 +21,11 @@ func GetDataBase(session *mgo.Session) *mgo.Database{
 }
 
 func GetPostCollection(db *mgo.Database) *mgo.Collection {
-	return db.C("BlogPost")
+	return db.C("Post")
 }
 
 func GetGoalCollection(db *mgo.Database) *mgo.Collection {
-	return db.C("BlogPost")
+	return db.C("Goal")
 }
 
 func GetUserCollection(db *mgo.Database) *mgo.Collection {

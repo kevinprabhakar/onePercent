@@ -13,3 +13,26 @@ type User struct {
 	CheckeeOf		[]bson.ObjectId		`bson:"checkeeOf"`
 	Email 			string				`bson:"email"`
 }
+
+type UserSignUpParams struct {
+	Email 			string 			`json:"email"`
+	Password 		string 			`json:"password"`
+	Name 			string 			`json:"name"`
+}
+
+type UserSignInParams struct {
+	Email 			string 			`json:"email"`
+	Password 		string 			`json:"password"`
+}
+
+type GoalCreateParams struct {
+	Owner 			string 				`json:"owner"`
+	Name 			string 				`json:"name"`
+	Description 	string 				`json:"description"`
+	Created 		int64 				`json:"created"`
+	UpdateBy 		int64 				`json:"updateBy"`
+}
+
+type UserIdList struct {
+	IdList 			[]string 			`json:"idList"`
+}

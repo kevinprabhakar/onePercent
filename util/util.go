@@ -3,6 +3,7 @@ package util
 import (
 	"regexp"
 	"golang.org/x/crypto/bcrypt"
+	"encoding/json"
 )
 
 func IsValidEmail(email string) (bool) {
@@ -25,4 +26,16 @@ func HashPassword(password string) (string, error) {
 func CheckPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
+}
+
+func GetNoDataSuccessResponse() string {
+	return "{\"success\":1}"
+}
+
+func GetStringJson(v interface{})(string, error){
+	jsonForm, err := json.Marshal(v)
+	if (err != nil){
+		return "", err
+	}
+	return string(jsonForm), nil
 }

@@ -1,0 +1,54 @@
+#navBarLogo {
+    float: left;
+    margin-right: 5px;
+}
+
+#navBarLogoText {
+    color: #000000;
+}
+
+.nav-item {
+    color: #000000;
+
+}
+
+.textWhite{
+    color: white;
+}
+
+.sanSerif{
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+.bg-no-overlay {
+    /*With gradient over image*/
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://www.california-tour.com/wp-content/uploads/2013/09/Yosemite-shutterstock-super-banner.jpg");
+
+    /*Without gradient over image
+    background: url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");*/
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 450px;
+    padding-top: 50px;
+}
+
+#aboutImage{
+    margin-left:0;
+    float:left;
+}
+
+#aboutText{
+    float:left;
+}
+
+#aboutTextHeader{
+    margin:0;
+}
+
+#aboutCategory{
+    color:black;
+    text-decoration:none;
+}

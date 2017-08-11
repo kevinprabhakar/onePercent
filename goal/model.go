@@ -14,3 +14,4 @@ type Goal struct {
 	Created 		time.Time 			`bson:"created"`
 	UpdateBy 		time.Time 			`bson:"updateBy"`
 }
+
