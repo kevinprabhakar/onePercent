@@ -1,3 +1,7 @@
+body{
+    background-image: url("http://www.guoguiyan.com/data/out/88/69777626-gradient-wallpapers.jpg");
+}
+
 #navBarLogo {
     float: left;
     margin-right: 5px;
@@ -12,6 +16,9 @@
 
 }
 
+#customNavBar{
+    margin-bottom: 0px;
+}
 .textWhite{
     color: white;
 }
@@ -20,9 +27,14 @@
     font-family: 'Saira Semi Condensed', sans-serif;
 }
 
+.FAQQuestion{
+    font-family: 'Saira Semi Condensed', sans-serif;
+    color: #f4b042;
+}
+
 .bg-no-overlay {
     /*With gradient over image*/
-    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://www.california-tour.com/wp-content/uploads/2013/09/Yosemite-shutterstock-super-banner.jpg");
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://www.nationalparks.org/sites/default/files/styles/wide_2x/public/shutterstock_142351951.jpg?itok=4VSjqdM1&timestamp=1474998760");
 
     /*Without gradient over image
     background: url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");*/
@@ -48,7 +60,57 @@
     margin:0;
 }
 
-#aboutCategory{
-    color:black;
+#aboutCategory, #featuresCategory, #whyCategory{
+    color: black;
     text-decoration:none;
 }
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.boxAround{
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.customBackground{
+    background: url("https://www.xmple.com/wallpaper/gradient-white-grey-linear-3840x2160-c2-ffffff-d3d3d3-a-240-f-14.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }

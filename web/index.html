@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>One Percent - Home</title>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/128/126/126058.png"/>
 
-    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,9 +22,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
+
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/onePercent.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+
 </head>
-<body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+<body class="customBackground">
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top"  id="customNavBar">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogo" alt="One Percent">
@@ -30,13 +40,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="#aboutCategory" class="nav-item">About</a></li>
-                <li><a href="#" class="nav-item">Features</a></li>
-                <li><a href="#" class="nav-item">Why One Percent?</a></li>
-                <li><a href="#" class="nav-item">Contact</a></li>
+                <li><a href="#featuresCategory" class="nav-item">Features</a></li>
+                <li><a href="#whyCategory" class="nav-item">Frequently Asked Questions</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="nav-item"><button type="button" class="btn btn-primary">Login</button></a><li>
-
+                <li><a href="#" class="nav-item"><button type="button" class="btn btn-primary" data-toggle="modal" id="navLogin" data-target="#LoginModal">Login</button></a><li>
             </ul>
         </div>
     </div>
@@ -48,30 +56,175 @@
         <h2 class="sanSerif">Goal Hacking One Percent at a Time</h2>
         <br><br><br>
 
-        <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
-        <br><br><br>
-        <h3 class="sanSerif">HELLO </h3>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
     </div>
 </div>
-<div class="container">
+<div class="container-fluid" id="aboutDiv">
     <div class="row text-center">
         <h1 class="sanSerif"><a id="aboutCategory">About</a></h1>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-8" id="aboutImage">
-                <img class="img-responsive center-block" src="https://previews.123rf.com/images/thoermer/thoermer1106/thoermer110600077/9879133-a-soccer-ball-in-the-goal-Stock-Photo.jpg" width="100%">
+                <img class="img-responsive center-block" src="https://iso.500px.com/wp-content/uploads/2015/10/yosemite2_cover-1500x1000.jpeg" width="100%">
             </div>
             <div class="col-md-4" id="aboutText">
                 <h2 class="sanSerif">What is the One Percent Project?</h2>
                 <div class="text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed enim et nisi facilisis porta eu eu purus. Sed rutrum faucibus mattis. Phasellus ac faucibus lectus. Cras pharetra, tortor id dignissim rhoncus, nisi erat bibendum libero, at lobortis massa tellus in purus. Duis dignissim interdum augue, et luctus leo. Nunc luctus interdum ante, ut tristique eros vestibulum vel. Phasellus ut enim dolor. Mauris eget sapien eu mi condimentum dignissim.
-                Ut eu tellus ac turpis egestas tincidunt eu vel neque. Nulla in consectetur metus, a maximus nulla. Vestibulum cursus tristique iaculis. Vivamus molestie sapien libero, finibus dictum lorem sodales non. Sed ultricies metus dolor, et pretium magna interdum nec. Donec eu tristique neque. Proin a nisi vel nunc tincidunt finibus ac ut mauris. Etiam eget risus sit amet tortor dictum tincidunt nec a risus. Mauris mattis sapien a felis consequat, ut ultrices arcu efficitur. Aenean aliquam imperdiet molestie.
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br>
+<div class="container-fluid" id="featuresDiv">
+    <div class="row text-center">
+        <h1 class="sanSerif"><a id="featuresCategory">Features</a></h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-check-circle fa-3x"></i><h3 class="sanSerif">Update your long term goals with daily posts</h3></li>
+                    <br>
+                    <li><i class="fa-li fa fa-user-o fa-3x"></i><h3 class="sanSerif">Keep yourself on goal with accountability partners</h3></li>
+                    <br>
+                    <li><i class="fa-li fa fa-lightbulb-o fa-3x"></i><h3 class="sanSerif">Track your progress to give you motivation</h3></li>
+                    <br>
+                </ul>
+
+            </div>
+            <div class="col-md-7">
+                <img class="img-responsive center-block" src="https://s-media-cache-ak0.pinimg.com/originals/08/55/8c/08558c874923c5b77a5735fb5dba7769.jpg" width="100%">
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="container-fluid" id="whyDiv">
+    <div class="row text-center">
+        <h1 class="sanSerif"><a id="whyCategory">Frequently Asked Questions</a></h1>
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-5 col-md-offset-1">
+        <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="SignUpModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwd" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="verifyPassword">Re-enter Password</label>
+                        <input type="password" id="verifyPassword" class="form-control" placeholder="Verify Password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modalSignUpButton">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="LoginModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="emailLogin" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwdLogin" class="form-control" placeholder="Enter Password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modalLoginButton">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<div class="text-center center-block">
+    Copyright Kevin Prabhakar 2017
+    <br>
+    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+    <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+    <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+</div>
+
+
+
+
 
 </body>
 </html>

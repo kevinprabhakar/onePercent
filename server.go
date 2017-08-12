@@ -203,5 +203,34 @@ func main(){
 		fmt.Fprintf(w,jsonForm)
 	})
 
+	//accessToken: <accessToken from cookie>
+	http.HandleFunc("/api/verifyaccesstoken", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Verify Access Token Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+
+		ServerLogger.Debug(accessToken)
+		ServerLogger.Debug(r.URL.Hostname())
+
+		uid, err := user.VerifyAccessToken(accessToken)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Could not verify access token")
+			fmt.Fprintf(w, err.Error())
+			return
+		}
+
+		successMap := map[string]string{"userId":uid}
+		jsonForm, err := util.GetStringJson(successMap)
+		if (err != nil){
+			ServerLogger.ErrorMsg(err.Error())
+			fmt.Fprintf(w, err.Error())
+			return
+		}
+
+		fmt.Fprintf(w,jsonForm)
+	})
+
+	http.Handle("/", http.FileServer(http.Dir("./web")))
+
 	http.ListenAndServe(":3000", nil)
 }
