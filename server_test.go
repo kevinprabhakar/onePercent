@@ -13,10 +13,16 @@ import (
 	"onePercent/mongo"
 	"onePercent/post"
 	"onePercent/util"
+	//"onePercent/notif"
+	"onePercent/notif"
 )
 
 var TestUserController = user.NewUserController(MongoSession, ServerLogger)
+var TestNotifController = notif.NewNotifController(MongoSession,ServerLogger)
 
+func TestSendEmail(t *testing.T){
+	TestNotifController.CheckAndSend()
+}
 
 func TestGetStringJson(t *testing.T){
 	sampleGoalCreateParams := goal.NewGoal(bson.NewObjectId(),"Name","description",0,0)
@@ -296,7 +302,7 @@ func TestAddCheckee(t *testing.T){
 
 	idList := []string{CheckerUser.Id.Hex()}
 
-	CheckersList := user.AddCheckersList{idList}
+	CheckersList := user.UserIdList{idList}
 
 	jsonForm2, _ := util.GetStringJson(CheckersList)
 
@@ -318,4 +324,24 @@ func TestAddCheckee(t *testing.T){
 	}
 
 	fmt.Println(string(respBody2))
+}
+
+func TestAccessTokenMessage(t *testing.T){
+	from := "kevin.surya@gmail.com"
+	to := "prabhakk@usc.edu"
+	token, err := user.GetMessageAccessToken(from, to)
+	if (err != nil){
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println(token)
+
+	a,b,c := user.VerifyMessageAccessToken(token)
+	if (c != nil){
+		fmt.Println(c.Error())
+		return
+	}
+
+	fmt.Println(a + " " + b)
 }

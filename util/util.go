@@ -4,6 +4,8 @@ import (
 	"regexp"
 	"golang.org/x/crypto/bcrypt"
 	"encoding/json"
+	"fmt"
+	"net/http"
 )
 
 func IsValidEmail(email string) (bool) {
@@ -38,4 +40,11 @@ func GetStringJson(v interface{})(string, error){
 		return "", err
 	}
 	return string(jsonForm), nil
+}
+
+func CustomError(w http.ResponseWriter, error string, code int){
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	w.WriteHeader(code)
+	fmt.Fprintf(w, error)
 }

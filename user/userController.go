@@ -9,6 +9,7 @@ import (
 	"onePercent/util"
 	"errors"
 	//"fmt"
+	"golang.org/x/net/html"
 )
 
 type UserController struct {
@@ -34,7 +35,11 @@ func (self *UserController)SignUp(params string)(*User, error){
 	}
 
 	if(len(SignUpParams.Password) < 6){
-		return nil, errors.New("Password is too short")
+		return nil, errors.New("PasswordTooShort")
+	}
+
+	if (SignUpParams.Password != SignUpParams.PasswordVerify){
+		return nil, errors.New("PasswordsDontMatch")
 	}
 
 	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
@@ -44,7 +49,7 @@ func (self *UserController)SignUp(params string)(*User, error){
 	err := userCollection.Find(bson.M{ "email": SignUpParams.Email}).One(&findUser)
 
 	if (err != mgo.ErrNotFound){
-		return nil, errors.New("User with this email Id already exists")
+		return nil, errors.New("EmailAlreadyExists")
 	}
 
 	passHash, err := util.HashPassword(SignUpParams.Password)
@@ -54,12 +59,12 @@ func (self *UserController)SignUp(params string)(*User, error){
 
 	newUser := User{
 		Id			: bson.NewObjectId(),
-		Name		: SignUpParams.Name,
+		Name		: html.EscapeString(SignUpParams.Name),
 		PassHash	: passHash,
 		Goals 		: []bson.ObjectId{},
 		CheckerOf	: []bson.ObjectId{},
-		CheckeeOf   : []bson.ObjectId{},
-		Email 		: SignUpParams.Email,
+		CheckeeOf   : []Checker{},
+		Email 		: html.EscapeString(SignUpParams.Email),
 	}
 
 	insertErr := userCollection.Insert(newUser)
@@ -80,10 +85,10 @@ func (self *UserController)SignIn(params string)(*User, error){
 		return nil, decodeErr
 	}
 	if (!util.IsValidEmail(SignInParams.Email)){
-		return nil, errors.New("Email Field Missing")
+		return nil, errors.New("MissingEmailField")
 	}
 	if(len(SignInParams.Password) == 0){
-		return nil, errors.New("Password Field Missing")
+		return nil, errors.New("MissingPasswordField")
 	}
 
 	var verifyUser User
@@ -93,12 +98,12 @@ func (self *UserController)SignIn(params string)(*User, error){
 	findErr := userCollection.Find(bson.M{"email" : SignInParams.Email}).One(&verifyUser)
 
 	if (findErr != nil){
-		return nil, errors.New("User doesn't exist")
+		return nil, errors.New("NonexistentUser")
 	}
 
 	passwordMatch := util.CheckPasswordHash(SignInParams.Password, verifyUser.PassHash)
 	if (!passwordMatch){
-		return nil, errors.New("Invalid Password")
+		return nil, errors.New("InvalidPassword")
 	}
 
 	return &verifyUser, nil
@@ -111,7 +116,7 @@ func (self *UserController)GetCurrUser(accessToken string)(*User, error){
 		return nil, err
 	}
 	if (!bson.IsObjectIdHex(uid)){
-		return nil, errors.New("Invalid BSON Id")
+		return nil, errors.New("InvalidBSONId")
 	}
 
 	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
@@ -133,7 +138,7 @@ func (self *UserController)GetUsers(params string)(*[]User, error){
 	decErr := dec.Decode(&userIds)
 
 	if (decErr != nil){
-		return nil, decErr
+		return nil, errors.New("CANT DECODE")
 	}
 
 	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
@@ -142,7 +147,7 @@ func (self *UserController)GetUsers(params string)(*[]User, error){
 
 	for _, uid := range userIds.IdList{
 		if (!bson.IsObjectIdHex(uid)){
-			return nil, errors.New("Invalid BSON Id")
+			return nil, errors.New("InvalidBSONId")
 		}else{
 			userIdListBson = append(userIdListBson, bson.ObjectIdHex(uid))
 		}
@@ -153,7 +158,7 @@ func (self *UserController)GetUsers(params string)(*[]User, error){
 	findErr := userCollection.Find(bson.M{"_id" : bson.M{"$in" : userIdListBson}}).All(&userList)
 
 	if (findErr != nil){
-		return nil, findErr
+		return nil, errors.New("CANT FIND USERS FROM BSON")
 	}
 
 	return &userList, nil

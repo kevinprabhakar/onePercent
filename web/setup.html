@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One Percent</title>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/128/126/126058.png"/>
+
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="css/setup.css">
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/onePercent.js"></script>
+    <script type="text/javascript" src="js/setup.js"></script>
+</head>
+<body class="customBackground">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top"  id="customNavBar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogo" alt="One Percent">
+            <span id="navBarLogoText">One Percent</span>
+        </a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="nav-item">Contact</a></li>
+                <li><a href="#" class="nav-item">Support</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Set Your Goal">
+                            <span class="round-tab">
+                                <i class="fa fa-puzzle-piece"></i>
+                            </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Choose your Partners">
+                            <span class="round-tab">
+                                <i class="fa fa-male"></i>
+                            </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="fa fa-check"></i>
+                            </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form role="form" id="goalsForm">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <div id="goalEnter">
+                                    <h1 class="sanSerif">Now that we're here...What is your goal?</h1>
+                                    <br>
+                                            <div class="form-group" id="goalForm">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" placeholder="Example: I want to climb Mount Everest." id="goalName" maxlength="100" name="goalName">
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <span id="goalNameCounter" class="sanSerif">100 characters remaining</span>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <textarea class="form-control" placeholder="Goal Description" name="goalDescription" id="goalDescription" maxlength="500" rows="10"></textarea>
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <span id="goalDescriptionCounter" class="sanSerif">500 characters remaining</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <div id="partnersEnter">
+                                    <h1 class="sanSerif">Who do you want to keep you accountable?</h1>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-4 pull-left">
+                                                        <input type="email" class="form-control" placeholder="kevin.surya@gmail.com" name="checkerAddr">
+                                                    </div>
+                                                    <div class="col-md-4 pull-left">
+                                                        <input type="text" class="form-control" placeholder="Kevin" name="checkerName">
+                                                    </div>
+                                                </div>
+                                                <div id="addPartnersDiv">
+
+                                                </div>
+                                            </div>
+                                    <button type="button" class="btn btn-primary" id="addPartnersButton">Add Partner</button>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <h3>Complete</h3>
+                                <p>You have successfully completed all steps.</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="submit" class="btn btn-default" id="goToDashboard">Go to Account Dashboard</button></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</nav>
+</body>
+</html>

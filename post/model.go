@@ -23,3 +23,4 @@ type PostCreateParams struct {
 	Goal 		string 				`json:"goal"`
 	Created 	int64 				`json:"created"`
 }
+

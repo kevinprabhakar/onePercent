@@ -10,7 +10,6 @@ OnePercent.prototype.createCookie = function(name,value,days) {
 	}
 	else var expires = "";
 	document.cookie = name+"="+value+expires+"; path=/";
-	console.log("success")
 }
 
 OnePercent.prototype.readCookie = function(name) {
@@ -29,14 +28,5 @@ OnePercent.prototype.eraseCookie = function(name) {
 	self.createCookie(name,"",-1);
 }
 
-OnePercent.prototype.changeLogin = function() {
-    var self = this
-
-    if (self.readCookie('accessToken')==null){
-        $('#navLogin').text('Login')
-    }else{
-        $('#navLogin').text('Logout')
-    }
-}
 
 var api = new OnePercent()

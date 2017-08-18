@@ -1,0 +1,14 @@
+InvalidBSONId
+EmptyPostField
+InvalidMongoSession
+NilLogger
+NonexistentUser
+SelfAddUnAllowed
+InvalidEmailAddress
+PasswordTooShort
+EmailAlreadyExists
+MissingEmailField
+MissingPasswordField
+NonexistentUser
+InvalidPassword
+InvalidAccessToken

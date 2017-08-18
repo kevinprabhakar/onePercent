@@ -37,3 +37,34 @@ func VerifyAccessToken(tokenString string) (string, error) {
 		return "", err
 	}
 }
+
+func GetMessageAccessToken(from string, to string)(string, error){
+	token := jwt.New(jwt.SigningMethodHS256)
+	claims := token.Claims.(jwt.MapClaims)
+
+	claims["from"] = from
+	claims["to"] = to
+	claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+	// Sign and get the complete encoded token as a string
+	tokenString, err := token.SignedString([]byte(TempAuthKey))
+
+	if err != nil {
+		return "", err
+	}
+
+	return tokenString, nil
+}
+
+func VerifyMessageAccessToken(tokenString string) (string, string, error) {
+	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		return []byte(TempAuthKey), nil
+	})
+
+	if err == nil && token.Valid {
+		claims := token.Claims.(jwt.MapClaims)
+
+		return claims["from"].(string), claims["to"].(string), nil
+	} else {
+		return "","", err
+	}
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One Percent</title>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/128/126/126058.png"/>
+
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"/>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="css/app.css">
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/onePercent.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/appAccount.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script>
+
+    </script>
+
+</head>
+<body class="customBackground">
+    <!--https://bootsnipp.com/snippets/featured/responsive-navigation-menu-->
+    <div class="nav-side-menu">
+        <a href="#homepage" class="navbarlink">
+            <div class="brand">
+                <span class="brand"><img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogoSideMenu" alt="One Percent">One Percent</span>
+            </div>
+        </a>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <a href="#onePercentLink" class="navbarlink">
+                    <div>
+                        <li>
+                            <i class="fa fa-percent fa-lg"></i> Add One Percent
+                        </li>
+                    </div>
+                </a>
+                <a href="#dashboardLink" class="navbarlink">
+                    <li>
+                        <i class="fa fa-tachometer fa-lg"></i> Dashboard
+                    </li>
+                </a>
+
+                <a href="#accountLink" class="navbarlink">
+                    <li>
+                        <i class="fa fa-user-circle-o fa-lg"></i> Account
+                    </li>
+                </a>
+
+                <a href="#logoutLink" class="navbarlink">
+                    <li>
+                        <i class="fa fa-sign-out fa-lg"></i> Sign out
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div id="containerPastBar">
+        <div id="addOnePercent" hidden="true">
+            <div class="container">
+                <h1 class="sanSerif"><u>Add your one percent for the day</u></h1>
+                <form id="onePercentForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="action"><h2 class="sanSerif">Action</h2></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <textarea id="action" rows="10" name="action"class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <span id="actionDescriptionCounter" class="sanSerif">16 words remaining</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="feeling"><h2 class="sanSerif">Feeling</h2></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <textarea id="feeling" rows="10" name="action"class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <span id="feelingDescriptionCounter" class="sanSerif">8 words remaining</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="learning"><h2 class="sanSerif">Learning</h2></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <textarea id="learning" rows="10" name="action"class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <span id="learningDescriptionCounter" class="sanSerif">16 words remaining</span>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <button type="button" class="btn btn-primary" id="submitPostButton">Submit Post</button>
+            </div>
+        </div>
+        <div id="accountPage" hidden="true" class="sanSerif">
+            <div class="container-fluid">
+                <h1><u>Account</u></h1>
+                <h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Name:
+                        </div>
+                        <div class="col-md-8" id="currUserName">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Email:
+                        </div>
+                        <div class="col-md-8" id="currUserEmail">
+                            <button type='button' class='btn btn-default' id='changeEmailButton'>Change Email</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Password:
+                        </div>
+                        <div class="col-md-8" id="currUserPassword">
+                            <button type='button' class='btn btn-success' id='changePasswordButton' data-toggle="modal" data-target="#passwordChangeModal">Change Password</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Accountability Partners:
+                        </div>
+                        <div class="col-md-8" id="currUserPartners">
+                            <button type='button' class='btn btn-default' id='addPartnerButton'>Add Accountability Partner</button>
+                        </div>
+                    </div>
+                </h3>
+                <br>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type='button' class="btn btn-primary" id="updateAccountButton">Update Account</button>
+                    </div>
+                    <div class="col-md-4">
+                        Click "Update Account" to Save your Changes
+                    </div>
+                </div>
+                <div class="modal fade" id="passwordChangeModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="LoginModalLabel">Change Password</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h5 id="passwordChangeErrorMessage" class="text-center">
+
+                                </h5>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="oldPassword">Old Password:</label>
+                                        <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password:</label>
+                                        <input type="password" id="newPassword" class="form-control" placeholder="New Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPasswordVerify">Verify Password:</label>
+                                        <input type="password" id="newPasswordVerify" class="form-control" placeholder="Verify Password">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="modalChangePasswordButton">Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dashboardPage" hidden="true" class="sanSerif">
+            <div class="container">
+                <u><h1>Goal</h1></u>
+
+                <div class="boxClass">
+                    <div class="container-fluid">
+                        <h2 id="goalName">
+
+                        </h2>
+                        <h4 id="goalDescription">
+
+                        </h4>
+                    </div>
+
+                </div>
+
+                <u><h1>History</h1></u>
+                <div id="historyTable">
+                    <table width="75%" id="forDataTable" class="table table-bordered">
+                        <thead>
+                            <th width="20%">Date</th>
+                            <th width="26%">Action</th>
+                            <th>Feeling</th>
+                            <th width="26%">Learning</th>
+                        </thead>
+                        <tbody id="historyTableBody">
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

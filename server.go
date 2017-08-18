@@ -10,14 +10,21 @@ import(
 	"onePercent/user"
 	"onePercent/goal"
 	"encoding/json"
+	"onePercent/notif"
 )
 
 var MongoSession = mongo.GetMongoSession()
 var ServerLogger = util.NewLogger(ioutil.Discard, os.Stdout, os.Stdout, os.Stderr)
 var UserController = user.NewUserController(MongoSession, ServerLogger)
 var GoalController = goal.NewGoalController(MongoSession, ServerLogger)
+var NotifController = notif.NewNotifController(MongoSession, ServerLogger)
+
+
+
 
 func main(){
+	go NotifController.CheckAndSend()
+
 	//p : {"email" : <Email address as string>, "password": <Unhashed password>, "name": <Name>}
 	http.HandleFunc("/api/signup", func(w http.ResponseWriter, r *http.Request){
 		ServerLogger.Debug("Received New SignUp Request")
@@ -29,7 +36,7 @@ func main(){
 
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not Sign Up New User")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -37,7 +44,8 @@ func main(){
 
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not generate new access Token")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
+
 			return
 		}
 
@@ -56,7 +64,7 @@ func main(){
 
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not sign in User")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -64,7 +72,7 @@ func main(){
 
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not generate new access Token")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -82,14 +90,14 @@ func main(){
 
 		addingUser, err := UserController.GetCurrUser(accessToken)
 		if (err != nil){
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Couldn't get curr user controller")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -97,7 +105,7 @@ func main(){
 
 		if (goalError != nil){
 			ServerLogger.ErrorMsg("Could not add goal to user profile")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -117,21 +125,21 @@ func main(){
 		_, err := UserController.GetCurrUser(accessToken)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Invalid Access Token")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		post, err := GoalController.AddPost(params)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not add post to goal")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		jsonForm, err := json.Marshal(post)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not marshall JSON post")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -141,35 +149,36 @@ func main(){
 	//accessToken: <accessToken from cookie>
 	//p : {"idList" : <contains array of strings of user ids>}
 	http.HandleFunc("/api/addcheckeeof", func(w http.ResponseWriter, r *http.Request){
-		ServerLogger.Debug("Received Add Goal Request")
+		ServerLogger.Debug("Received Add Checkee Request")
 		r.ParseForm()
 		accessToken := r.Form.Get("accessToken")
 		params := r.Form.Get("p")
 
+		ServerLogger.Debug(params)
+
 		addingUser, err := UserController.GetCurrUser(accessToken)
 		if (err != nil){
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Couldn't get curr user controller")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		checkersList, addErr := currUserController.AddCheckers(params)
 		if (addErr != nil){
 			ServerLogger.ErrorMsg("Could not marshall add Checkers to user profile")
-			fmt.Fprintf(w, addErr.Error())
+			util.CustomError(w, addErr.Error(),400)
 			return
 		}
-
 		jsonForm, err := json.Marshal(checkersList)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Could not marshall JSON checkers list")
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -185,22 +194,88 @@ func main(){
 
 		_, err := user.VerifyAccessToken(accessToken)
 		if (err != nil){
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		userList, userGetErr := UserController.GetUsers(params)
 		if (userGetErr != nil){
-			fmt.Fprintf(w, userGetErr.Error())
+			util.CustomError(w, userGetErr.Error(),400)
 			return
 		}
 
 		jsonForm, jsonErr := util.GetStringJson(userList)
 		if (jsonErr != nil){
-			fmt.Fprintf(w,jsonErr.Error())
+			util.CustomError(w, jsonErr.Error(),400)
 			return
 		}
 		fmt.Fprintf(w,jsonForm)
+	})
+
+	//accessToken: <accessToken from cookie>
+	http.HandleFunc("/api/goal", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Goal Info Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user controller")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		goalList, err := currUserController.GetGoals()
+
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user goals")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		jsonForm, jsonErr := util.GetStringJson(goalList)
+		if (jsonErr != nil){
+			util.CustomError(w, jsonErr.Error(),400)
+			return
+		}
+		fmt.Fprintf(w,jsonForm)
+	})
+
+	http.HandleFunc("/api/dashboard", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Dashboard Info Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user controller")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		dashboard, err := currUserController.GetDashboard()
+
+		jsonForm, err := util.GetStringJson(dashboard)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't marshall JSON")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, jsonForm)
+
 	})
 
 	//accessToken: <accessToken from cookie>
@@ -209,13 +284,10 @@ func main(){
 		r.ParseForm()
 		accessToken := r.Form.Get("accessToken")
 
-		ServerLogger.Debug(accessToken)
-		ServerLogger.Debug(r.URL.Hostname())
-
 		uid, err := user.VerifyAccessToken(accessToken)
 		if (err != nil){
-			ServerLogger.ErrorMsg("Could not verify access token")
-			fmt.Fprintf(w, err.Error())
+			ServerLogger.ErrorMsg("InvalidAccessToken")
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
@@ -223,11 +295,153 @@ func main(){
 		jsonForm, err := util.GetStringJson(successMap)
 		if (err != nil){
 			ServerLogger.ErrorMsg(err.Error())
-			fmt.Fprintf(w, err.Error())
+			util.CustomError(w, err.Error(),400)
 			return
 		}
 
 		fmt.Fprintf(w,jsonForm)
+	})
+
+
+	http.HandleFunc("/api/removecheckeeof", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Remove Checkee Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+		emailRemove := r.Form.Get("checkee")
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user controller")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		removeErr := currUserController.RemoveCheckeeOf(emailRemove)
+
+		if (removeErr != nil){
+			ServerLogger.ErrorMsg("Couldn't get remove checkee of ")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, util.GetNoDataSuccessResponse())
+	})
+
+	http.HandleFunc("/api/changeemail", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Change Email Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+		newEmail := r.Form.Get("email")
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user controller")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		changeEmailErr := currUserController.ChangeEmail(newEmail)
+		if (changeEmailErr != nil){
+			ServerLogger.ErrorMsg("Couldn't change user email")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w,util.GetNoDataSuccessResponse())
+	})
+
+	http.HandleFunc("/api/changepassword", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Change Password Request")
+		r.ParseForm()
+
+		accessToken := r.Form.Get("accessToken")
+		params := r.Form.Get("p")
+
+		ServerLogger.Debug(params)
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		currUserController, err := user.NewCurrUserController(addingUser.Id.Hex(),MongoSession, ServerLogger)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get curr user controller")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		changePassErr := currUserController.ChangePassword(params)
+
+		if (changePassErr != nil){
+			ServerLogger.ErrorMsg("Couldn't change User Password")
+			util.CustomError(w, changePassErr.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, util.GetNoDataSuccessResponse())
+	})
+
+	http.HandleFunc("/api/verifymessageaccesstoken", func(w http.ResponseWriter, r *http.Request){
+		r.ParseForm()
+		messageAccessToken := r.Form.Get("messageAccessToken")
+
+		from, to, messageError := user.VerifyMessageAccessToken(messageAccessToken)
+		if (messageError != nil){
+			ServerLogger.ErrorMsg("Couldn't verify message accessToken")
+			util.CustomError(w, messageError.Error(),400)
+			return
+		}
+
+		returnEmails := user.MessageEmails{from,to}
+
+		jsonForm, jsonErr := util.GetStringJson(returnEmails)
+		if (jsonErr != nil){
+			ServerLogger.ErrorMsg("Couldn't marshall message email addresses")
+			util.CustomError(w, jsonErr.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, jsonForm)
+	})
+
+	http.HandleFunc("/api/sendUserEmail", func(w http.ResponseWriter, r *http.Request){
+		r.ParseForm()
+		messageAccessToken := r.Form.Get("messageAccessToken")
+		fromEmail := r.Form.Get("fromEmail")
+		toEmail := r.Form.Get("toEmail")
+		messageSubject := r.Form.Get("messageSubject")
+		messageText := r.Form.Get("messageText")
+
+		_,_, err := user.VerifyMessageAccessToken(messageAccessToken)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get email addresses from access token")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		sendErr := NotifController.SendUserEmail(fromEmail,toEmail,messageSubject,messageText)
+		if (sendErr != nil){
+			ServerLogger.ErrorMsg("Couldn't get email addresses from access token")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, util.GetNoDataSuccessResponse())
+
 	})
 
 	http.Handle("/", http.FileServer(http.Dir("./web")))

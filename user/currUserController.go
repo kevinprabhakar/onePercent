@@ -10,6 +10,8 @@ import (
 	"strings"
 	//"onePercent/goal"
 	"onePercent/goal"
+	"onePercent/post"
+	"golang.org/x/net/html"
 )
 
 type CurrUserController struct {
@@ -20,13 +22,13 @@ type CurrUserController struct {
 
 func NewCurrUserController(uid string, session *mgo.Session, logger *util.Logger) (*CurrUserController, error){
 	if (!bson.IsObjectIdHex(uid)){
-		return nil, errors.New("Invalid BSON Id")
+		return nil, errors.New("InvalidBSONId")
 	}
 	if (session == nil){
-		return nil, errors.New("Mongo Session Nil")
+		return nil, errors.New("InvalidMongoSession")
 	}
 	if (logger == nil){
-		return nil, errors.New("Logger is Nil")
+		return nil, errors.New("NilLogger")
 	}
 
 	userCollection := mongo.GetUserCollection(mongo.GetDataBase(session))
@@ -37,7 +39,7 @@ func NewCurrUserController(uid string, session *mgo.Session, logger *util.Logger
 	if (findErr != nil)&&(findErr != mgo.ErrNotFound){
 		return nil, findErr
 	}else if (findErr == mgo.ErrNotFound){
-		return nil, errors.New("Invalid User Id")
+		return nil, errors.New("NonexistentUser")
 	}
 
 	return &CurrUserController{bson.ObjectIdHex(uid), session, logger}, nil
@@ -62,7 +64,7 @@ func (self *CurrUserController)AddGoal(params string) (error){
 		return findErr
 	}
 
-	insertGoal := goal.NewGoal(currUser.Id,goalParams.Name,goalParams.Description,goalParams.Created,goalParams.UpdateBy)
+	insertGoal := goal.NewGoal(currUser.Id,html.EscapeString(goalParams.Name),html.EscapeString(goalParams.Description),goalParams.Created,goalParams.UpdateBy)
 
 	insertGoalError := goalCollection.Insert(insertGoal)
 
@@ -79,49 +81,169 @@ func (self *CurrUserController)AddGoal(params string) (error){
 	return nil
 }
 
-func (self *CurrUserController)AddCheckers(params string)(*[]User, error){
+func (self *CurrUserController)AddCheckers(params string)(*[]Checker, error){
 	dec := json.NewDecoder(strings.NewReader(params))
-	var checkersList UserIdList
+	var checkersList CheckerEmailName
 	decodeErr := dec.Decode(&checkersList)
 
 	if (decodeErr != nil){
 		return nil, decodeErr
 	}
 
-	for _, id := range checkersList.IdList {
-		if (!bson.IsObjectIdHex(id)){
-			return nil, errors.New("User Id given isn't valid BSON id")
+	for index, _ := range checkersList.CheckerList {
+		if (!util.IsValidEmail(checkersList.CheckerList[index].Email)){
+			return nil, errors.New("InvalidEmailId")
 		}
-	}
-
-	userIdList := make([]bson.ObjectId,0)
-
-	for _, id := range checkersList.IdList {
-		userIdList = append(userIdList, bson.ObjectIdHex(id))
-	}
-	userCollection := mongo.GetUserCollection(mongo.GetDataBase(mongo.GetMongoSession()))
-
-	UserList := make([]User, 0)
-
-	findUsersErr := userCollection.Find(bson.M{"_id" : bson.M{"$in" : userIdList}}).All(&UserList)
-
-	if (findUsersErr != nil){
-		return nil, findUsersErr
-	}
-
-	for _, User := range UserList {
-		if (User.Id == self.Uid){
-			return nil, errors.New("Error: Cannot add self as checker")
+		if (len(checkersList.CheckerList[index].Name)==0){
+			return nil,errors.New("InvalidName")
 		}
+		checkersList.CheckerList[index].Email = html.EscapeString(checkersList.CheckerList[index].Email)
+		checkersList.CheckerList[index].Name = html.EscapeString(checkersList.CheckerList[index].Name)
 	}
+
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+
 
 	matchQuery := bson.M{"_id" : self.Uid}
-	changeQuery := bson.M{"$addToSet" : bson.M{"checkeeOf" : bson.M{"$each" : userIdList}}}
+	changeQuery := bson.M{"$addToSet" : bson.M{"checkeeOf" : bson.M{"$each" : checkersList.CheckerList}}}
 
 	updateErr := userCollection.Update(matchQuery,changeQuery)
 
 	if (updateErr != nil){
 		return nil, updateErr
 	}
-	return &UserList, nil
+	return &checkersList.CheckerList, nil
+}
+
+func (self *CurrUserController)RemoveCheckeeOf(email string)(error){
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+
+	err := userCollection.Update(bson.M{"_id":self.Uid},bson.M{"$pull":bson.M{"checkeeOf":bson.M{"email":email}}})
+
+	if (err != nil){
+		self.Logger.Debug(err.Error())
+		return err
+	}
+	return nil
+}
+
+func (self *CurrUserController)ChangeEmail(email string)(error){
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+
+	findQuery := bson.M{"email":email}
+
+	userCount, countErr := userCollection.Find(findQuery).Count()
+
+	if (countErr != nil){
+		self.Logger.Debug(countErr.Error())
+		return countErr
+	}
+	if (userCount != 0){
+		errNew := errors.New("UserAlreadyExists")
+		self.Logger.Debug(errNew.Error())
+		return countErr
+	}
+
+	err := userCollection.Update(bson.M{"_id":self.Uid},bson.M{"$set":bson.M{"email" : html.EscapeString(email)}})
+
+	if (err != nil){
+		self.Logger.Debug(err.Error())
+		return err
+	}
+	return nil
+}
+
+func (self *CurrUserController)ChangePassword(params string)(error){
+	dec := json.NewDecoder(strings.NewReader(params))
+	var changeParams ChangePasswordParams
+	decErr := dec.Decode(&changeParams)
+
+	if (decErr != nil){
+		return decErr
+	}
+
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+	var findUser User
+	findErr := userCollection.Find(bson.M{"_id":self.Uid}).One(&findUser)
+
+	if (findErr != nil){
+		return findErr
+	}
+
+	if (!util.CheckPasswordHash(changeParams.OldPassword, findUser.PassHash)){
+		return errors.New("InvalidOldPassword")
+	}
+
+	newPassHash, passHashErr := util.HashPassword(changeParams.NewPassword)
+
+	if (passHashErr != nil){
+		return passHashErr
+	}
+
+	updateErr := userCollection.Update(bson.M{"_id": self.Uid},bson.M{"$set":bson.M{"passHash":newPassHash}})
+
+	if (updateErr != nil){
+		return updateErr
+	}
+
+	return nil
+}
+
+func(self *CurrUserController)GetDashboard()(*[]GoalPosts, error){
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+	goalCollection := mongo.GetGoalCollection(mongo.GetDataBase(self.Session))
+	postCollection := mongo.GetPostCollection(mongo.GetDataBase(self.Session))
+
+	var findUser User
+
+	findErr := userCollection.Find(bson.M{"_id":self.Uid}).One(&findUser)
+
+	if (findErr != nil){
+		return nil, findErr
+	}
+
+	var Goals []goal.Goal
+
+	findGoalsErr := goalCollection.Find(bson.M{"_id":bson.M{"$in" : findUser.Goals}}).All(&Goals)
+
+	if (findGoalsErr != nil){
+		return nil, findGoalsErr
+	}
+
+	returnCollection := make([]GoalPosts,0)
+
+	for _, goal := range Goals{
+		var Posts []post.Post
+		postFindErr := postCollection.Find(bson.M{"_id":bson.M{"$in":goal.Posts}}).All(&Posts)
+
+		if (postFindErr != nil){
+			return nil, postFindErr
+		}
+
+		returnCollection = append(returnCollection,GoalPosts{goal,Posts})
+	}
+	return &returnCollection, nil
+}
+
+func(self *CurrUserController)GetGoals()(*[]goal.Goal, error){
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+	goalCollection := mongo.GetGoalCollection(mongo.GetDataBase(self.Session))
+
+	var findUser User
+
+	findErr := userCollection.Find(bson.M{"_id":self.Uid}).One(&findUser)
+
+	if (findErr != nil){
+		return nil, findErr
+	}
+
+	var Goals []goal.Goal
+
+	findGoalsErr := goalCollection.Find(bson.M{"_id":bson.M{"$in" : findUser.Goals}}).All(&Goals)
+
+	if (findGoalsErr != nil){
+		return nil, findGoalsErr
+	}
+
+	return &Goals, nil
 }

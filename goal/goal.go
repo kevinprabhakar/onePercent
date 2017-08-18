@@ -46,20 +46,17 @@ func (self *GoalController)AddPost(params string)(*post.Post, error){
 		return nil, decErr
 	}
 	if (!bson.IsObjectIdHex(postParams.Owner)){
-		return nil, errors.New("Invalid BSON Id")
+		return nil, errors.New("InvalidBSONId")
 	}else{
 		userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
-		userCount, findErr := userCollection.Find(bson.M{"_id": bson.ObjectIdHex(postParams.Owner)}).Count()
+		_, findErr := userCollection.Find(bson.M{"_id": bson.ObjectIdHex(postParams.Owner)}).Count()
 
 		if (findErr != nil){
 			return nil, findErr
 		}
-		if (userCount != 1){
-			return nil, errors.New("More or Less than one user with this UID")
-		}
 	}
 	if (!bson.IsObjectIdHex(postParams.Goal)){
-		return nil, errors.New("Invalid BSON Id")
+		return nil, errors.New("InvalidBSONId")
 	}else{
 		goalCollection := mongo.GetGoalCollection(mongo.GetDataBase(self.Session))
 		var findGoal Goal
@@ -70,7 +67,7 @@ func (self *GoalController)AddPost(params string)(*post.Post, error){
 		}
 	}
 	if (len(postParams.Action) == 0)||(len(postParams.Learning) == 0)||(len(postParams.Feeling) == 0){
-		return nil, errors.New("Post field empty")
+		return nil, errors.New("EmptyPostField")
 	}
 
 	//Defining Databases and Creating insert post
