@@ -59,7 +59,7 @@ func (self *UserController)SignUp(params string)(*User, error){
 
 	newUser := User{
 		Id			: bson.NewObjectId(),
-		Name		: html.EscapeString(SignUpParams.Name),
+		Name		: strings.Replace(html.EscapeString(SignUpParams.Name),"&#39;","'",-1),
 		PassHash	: passHash,
 		Goals 		: []bson.ObjectId{},
 		CheckerOf	: []bson.ObjectId{},

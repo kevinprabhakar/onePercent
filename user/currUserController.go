@@ -64,7 +64,11 @@ func (self *CurrUserController)AddGoal(params string) (error){
 		return findErr
 	}
 
-	insertGoal := goal.NewGoal(currUser.Id,html.EscapeString(goalParams.Name),html.EscapeString(goalParams.Description),goalParams.Created,goalParams.UpdateBy)
+	insertGoal := goal.NewGoal(currUser.Id,
+		strings.Replace(html.EscapeString(goalParams.Name),"&#39;","'",-1),
+		strings.Replace(html.EscapeString(goalParams.Description),"&#39;","'",-1),
+		goalParams.Created,
+		goalParams.UpdateBy)
 
 	insertGoalError := goalCollection.Insert(insertGoal)
 
@@ -97,8 +101,9 @@ func (self *CurrUserController)AddCheckers(params string)(*[]Checker, error){
 		if (len(checkersList.CheckerList[index].Name)==0){
 			return nil,errors.New("InvalidName")
 		}
-		checkersList.CheckerList[index].Email = html.EscapeString(checkersList.CheckerList[index].Email)
-		checkersList.CheckerList[index].Name = html.EscapeString(checkersList.CheckerList[index].Name)
+		checkersList.CheckerList[index].Email = strings.Replace(html.EscapeString(checkersList.CheckerList[index].Email),"&#39;","'",-1)
+		checkersList.CheckerList[index].Name = strings.Replace(html.EscapeString(checkersList.CheckerList[index].Name),"&#39;","'",-1)
+
 	}
 
 	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
@@ -133,6 +138,10 @@ func (self *CurrUserController)ChangeEmail(email string)(error){
 	findQuery := bson.M{"email":email}
 
 	userCount, countErr := userCollection.Find(findQuery).Count()
+
+	if (!util.IsValidEmail(email)){
+		return errors.New("InvalidEmail")
+	}
 
 	if (countErr != nil){
 		self.Logger.Debug(countErr.Error())
@@ -221,6 +230,11 @@ func(self *CurrUserController)GetDashboard()(*[]GoalPosts, error){
 		}
 
 		returnCollection = append(returnCollection,GoalPosts{goal,Posts})
+	}
+
+	for index := range returnCollection{
+		returnCollection[index].Goal.Description = strings.Replace(returnCollection[index].Goal.Description,"&#39;","'",-1)
+		returnCollection[index].Goal.Name = strings.Replace(returnCollection[index].Goal.Name,"&#39;","'",-1)
 	}
 	return &returnCollection, nil
 }

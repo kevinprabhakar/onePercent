@@ -115,7 +115,7 @@ $(document).ready(function(){
                         break
                     default:
                         $("#loginErrorMessage").hide()
-                        $("#loginErrorMessage").html("")
+                        $("#loginErrorMessage").text("")
                         console.log(msg)
                 }
 

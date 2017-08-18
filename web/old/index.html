@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One Percent</title>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/128/126/126058.png"/>
+
+
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/onePercent.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+</head>
+<body class="customBackground">
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top"  id="customNavBar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogo" alt="One Percent">
+            <span id="navBarLogoText">One Percent</span>
+        </a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#aboutCategory" class="nav-item">About</a></li>
+                <li><a href="#featuresCategory" class="nav-item">Features</a></li>
+                <li><a href="#whyCategory" class="nav-item">Frequently Asked Questions</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="nav-item"><button type="button" class="btn btn-primary"id="navLogin">Login</button></a><li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid bg-no-overlay" id="coverPhoto">
+    <div class="row text-center">
+        <br>
+        <h1 class="sanSerif">The One Percent Project</h1>
+        <h2 class="sanSerif">Goal Hacking One Percent at a Time</h2>
+        <br><br><br>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#SignUpModal" id="signUpButton">Ready To Get Started</button>
+    </div>
+</div>
+<div class="container-fluid" id="aboutDiv">
+    <div class="row text-center">
+        <h1 class="sanSerif"><a id="aboutCategory">About</a></h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6" id="aboutImage">
+                <img class="img-responsive center-block" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg" width="100%">
+            </div>
+            <div class="col-md-6" id="aboutText">
+                <h2 class="sanSerif">What is the One Percent Project?</h2>
+                <div class="text-justify sanSerif">
+                    Why is it so hard to achieve our goals? There always seems to be a disconnect between the things that we want to happen and the things that actually happen.  I think the reason we fail at achieving our goals are numerous:
+                    <br>
+                    <ul>
+                        <li>We branch off into focusing on too many goals instead of focusing on a single thing</li>
+                        <li>We try to go at it alone, without any help from the people around us</li>
+                        <li>We are not consistent with the way we progress towards our goal</li>
+                        <li>We fail to document the progress we make towards our goals and make that progress concrete</li>
+                    </ul>
+                    This application hopes to change that.
+                    <br><br>
+                     The One Percent project is a web application dedicated to making sure that you achieve your goals one percent at a time. You set one single goal for yourself that you would like to achieve, and then you choose people close to you to hold you accountable for working towards that goal on a consistent basis. At the end of every day, you submit an entry to your account that contains the following three pieces of information:
+                    <br><br>
+                    <ul>
+                        <li><b>Action</b>: What you did that progresses you further to achieving your goal</li>
+                        <li><b>Feeling</b>: How doing the action that day made you feel</li>
+                        <li><b>Learning</b>: What you learned from doing the action that day</li>
+                    </ul>
+                    If on one of the days you forget to submit a post, all the people you asked to hold you accountable will get an email blast telling them that you didn’t progress closer towards your goal. Your accountability partners can then contact you, and send you a message of encouragement so that you keep on chugging towards your goal.
+                    <br><br>
+                    The name of the game is <b>TACT</b>.
+                    <br>
+                    <ul>
+                        <li><b>Tunnel Vision</b>: Focusing in on a single goal means that you re-orient your lifestyle towards achieving that goal, and you don’t get distracted by anything else.</li>
+                        <li><b>Accountability</b>: On the path to achieving a difficult goal, there are a lot of times when you don’t believe in yourself. That’s perfectly normal and perfectly okay. Luckily, the people around you believe in you a lot more than you think they do, so choosing good friends, family members, or even co-workers to keep you accountable to your goals would make the days where you don’t believe in yourself a little less dark.</li>
+                        <li><b>Consistency</b>: What you do every day matters more than what you do every once in a while. This app mandates your attention, and requires that you submit an entry every day documenting your progress towards your goal, lest your accountability partners are notified.</li>
+                        <li><b>Tangibility</b>: The Action-Feeling-Learning Model of progress documentation allows you to tangibly see the ways in which you are making progress towards your goal. You can even scroll through all of your previous posts to get a history of how you are progressing towards your goal</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid" id="featuresDiv">
+    <div class="row text-center">
+        <h1 class="sanSerif"><a id="featuresCategory">Features</a></h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-check-circle fa-3x"></i><h3 class="sanSerif">Update your long term goals with daily posts</h3></li>
+                    <br>
+                    <li><i class="fa-li fa fa-user-o fa-3x"></i><h3 class="sanSerif">Keep yourself on goal with accountability partners</h3></li>
+                    <br>
+                    <li><i class="fa-li fa fa-lightbulb-o fa-3x"></i><h3 class="sanSerif">Track your progress to give you motivation</h3></li>
+                    <br>
+                </ul>
+
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive center-block" src="https://s-media-cache-ak0.pinimg.com/originals/08/55/8c/08558c874923c5b77a5735fb5dba7769.jpg" width="100%">
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="container-fluid" id="whyDiv">
+    <div class="row text-center">
+        <h1 class="sanSerif"><a id="whyCategory">Frequently Asked Questions</a></h1>
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-5 col-md-offset-1">
+        <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+            <h3 class="FAQQuestion">Question Heading?</h3>
+            <div class="sanSerif text-justify">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="SignUpModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <h3 id="signUpErrMessage" class="text-center">
+
+                </h3>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwd" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="verifyPassword">Re-enter Password</label>
+                        <input type="password" id="verifyPassword" class="form-control" placeholder="Verify Password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modalSignUpButton">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="LoginModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="loginErrorMessage" class="text-center">
+
+                </h5>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="emailLogin" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwdLogin" class="form-control" placeholder="Enter Password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modalLoginButton">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<div class="text-center center-block">
+    Copyright Kevin Prabhakar 2017
+    <br>
+    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+    <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+    <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+</div>
+
+
+
+
+
+</body>
+</html>

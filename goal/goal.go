@@ -12,6 +12,7 @@ import (
 	"errors"
 	//"onePercent/user"
 
+	"golang.org/x/net/html"
 )
 
 type GoalController struct {
@@ -76,9 +77,9 @@ func (self *GoalController)AddPost(params string)(*post.Post, error){
 
 	insertPost := post.Post{
 		Id		: bson.NewObjectId(),
-		Action	: postParams.Action,
-		Feeling : postParams.Feeling,
-		Learning: postParams.Learning,
+		Action	: strings.Replace(html.EscapeString(postParams.Action),"&#39;","'",-1),
+		Feeling : strings.Replace(html.EscapeString(postParams.Feeling),"&#39;","'",-1),
+		Learning: strings.Replace(html.EscapeString(postParams.Learning),"&#39;","'",-1),
 		Owner 	: bson.ObjectIdHex(postParams.Owner),
 		Goal 	: bson.ObjectIdHex(postParams.Goal),
 		Created : time.Unix(postParams.Created, 0),

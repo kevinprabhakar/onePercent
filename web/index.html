@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>One Percent</title>
@@ -23,50 +25,48 @@
 
 
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/testhome.css">
     <script type="text/javascript" src="js/onePercent.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 
 </head>
-<body class="customBackground">
-
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top"  id="customNavBar">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogo" alt="One Percent">
-            <span id="navBarLogoText">One Percent</span>
-        </a>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="#aboutCategory" class="nav-item">About</a></li>
-                <li><a href="#featuresCategory" class="nav-item">Features</a></li>
-                <li><a href="#whyCategory" class="nav-item">Frequently Asked Questions</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="nav-item"><button type="button" class="btn btn-primary"id="navLogin">Login</button></a><li>
-            </ul>
-        </div>
+<body>
+<nav class="navbar navbar-toggleable-md fixed-top"  id="customNavBar">
+    <a class="navbar-brand" href="#">
+        <img src="https://image.flaticon.com/icons/png/128/126/126058.png" width="20" height="20" id="navBarLogo" alt="One Percent">
+        <span id="navBarLogoText">One Percent</span>
+    </a>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#aboutCategory" class="nav-item">About</a></li>
+            <li><a href="#featuresCategory" class="nav-item">Features</a></li>
+            <li><a href="#whyCategory" class="nav-item">Frequently Asked Questions</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="nav-item"><button type="button" class="btn btn-primary"id="navLogin">Login</button></a><li>
+        </ul>
     </div>
 </nav>
-<div class="container-fluid bg-no-overlay" id="coverPhoto">
-    <div class="row text-center">
-        <br>
-        <h1 class="sanSerif">The One Percent Project</h1>
-        <h2 class="sanSerif">Goal Hacking One Percent at a Time</h2>
-        <br><br><br>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#SignUpModal" id="signUpButton">Ready To Get Started</button>
+<div class="parallax text-center">
+    <div class="container">
+        <div class="row">
+            <h1 class="sanSerif textWhite">The One Percent Project</h1>
+        </div>
+        <div class="row">
+            <h2 class="sanSerif textWhite">Goal Hacking One Percent at a Time</h2>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#SignUpModal" id="signUpButton">Ready To Get Started</button>
+        </div>
     </div>
 </div>
-<div class="container-fluid" id="aboutDiv">
-    <div class="row text-center">
-        <h1 class="sanSerif"><a id="aboutCategory">About</a></h1>
-    </div>
-    <div class="container-fluid">
+<div class="parallax2">
+    <div class="container">
         <div class="row">
-            <div class="col-md-6" id="aboutImage">
-                <img class="img-responsive center-block" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg" width="100%">
-            </div>
-            <div class="col-md-6" id="aboutText">
+            <h1 class="sanSerif textWhite text-center"><a id="aboutCategory"><span class="textWhite">About</span></a></h1>
+        </div>
+        <div class="row">
+            <div class="textWhite" id="aboutText">
                 <h2 class="sanSerif">What is the One Percent Project?</h2>
                 <div class="text-justify sanSerif">
                     Why is it so hard to achieve our goals? There always seems to be a disconnect between the things that we want to happen and the things that actually happen.  I think the reason we fail at achieving our goals are numerous:
@@ -102,81 +102,95 @@
         </div>
     </div>
 </div>
-<br>
-<div class="container-fluid" id="featuresDiv">
-    <div class="row text-center">
-        <h1 class="sanSerif"><a id="featuresCategory">Features</a></h1>
+
+<div class="parallax3 text-center">
+    <div class="textWhite" id="featuresDiv">
+
+        <div class="container">
+            <div class="row text-center">
+                <h1 class="sanSerif"><a id="featuresCategory"><span class="textWhite">Features</span></a></h1>
+            </div>
+            <div class="row" id="featuresList">
+                <div class="col-md-2 col-md-offset-3">
+                    <div class="bordered">
+                        <i class="fa fa-pencil-square-o fa-3x"></i>
+                       <h4 class="sanSerif">Update your long term goals with daily posts</h4>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="bordered">
+                        <i class="fa fa-handshake-o fa-3x"></i>
+                        <h4 class="sanSerif">Stay movtivated by adding Accountability Partners</h4>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="bordered">
+                        <i class="fa fa-history fa-3x"></i>
+                        <h4 class="sanSerif">Keep track of progress by viewing post history</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
     </div>
-    <div class="container">
+
+</div>
+<div class="parallax4 text-center">
+    <div id="whyDiv">
+        <div class="row text-center">
+            <h1 class="sanSerif textWhite"><a id="whyCategory"><span class="textWhite">Frequently Asked Questions</span></a></h1>
+        </div>
+        <div class="container-fluid">
+            <div class="col-md-5 col-md-offset-1">
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif textWhite text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+                </div>
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif text-justify textWhite">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+                </div>
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif text-justify textWhite">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif text-justify textWhite">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+                </div>
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif text-justify textWhite">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+                </div>
+                <h3 class="FAQQuestion">Question Heading?</h3>
+                <div class="sanSerif text-justify textWhite">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
+
+
+                </div>
+            </div>
+        </div>
+        <hr>
         <div class="row">
-            <div class="col-md-6">
+            <div class="text-center textWhite">
+                Copyright Kevin Prabhakar 2017
                 <br>
-                <ul class="fa-ul">
-                    <li><i class="fa-li fa fa-check-circle fa-3x"></i><h3 class="sanSerif">Update your long term goals with daily posts</h3></li>
-                    <br>
-                    <li><i class="fa-li fa fa-user-o fa-3x"></i><h3 class="sanSerif">Keep yourself on goal with accountability partners</h3></li>
-                    <br>
-                    <li><i class="fa-li fa fa-lightbulb-o fa-3x"></i><h3 class="sanSerif">Track your progress to give you motivation</h3></li>
-                    <br>
-                </ul>
-
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive center-block" src="https://s-media-cache-ak0.pinimg.com/originals/08/55/8c/08558c874923c5b77a5735fb5dba7769.jpg" width="100%">
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
             </div>
         </div>
+        <br>
     </div>
-    <br>
+
 </div>
-<div class="container-fluid" id="whyDiv">
-    <div class="row text-center">
-        <h1 class="sanSerif"><a id="whyCategory">Frequently Asked Questions</a></h1>
-    </div>
-    <div class="container-fluid">
-        <div class="col-md-5 col-md-offset-1">
-        <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-            <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-            <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-        </div>
-        <div class="col-md-5">
-            <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-            <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-            <h3 class="FAQQuestion">Question Heading?</h3>
-            <div class="sanSerif text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo placerat maximus sodales, ligula sapien scelerisque diam, at fringilla justo massa vel turpis. Ut placerat nunc est, ut consectetur tellus pretium eu. Morbi pharetra mattis tempus. Integer sed rutrum orci. Nam et urna felis. Maecenas ullamcorper nunc sit amet venenatis tincidunt. Duis ut sollicitudin nibh. Morbi egestas ex ut facilisis tristique. Cras quis libero id enim tristique venenatis. Suspendisse auctor leo lectus, eu mollis erat gravida vitae. Aliquam rhoncus eleifend felis non volutpat.
-
-
-            </div>
-        </div>
-    </div>
-    <br>
-</div>
-
 <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUpModalLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -241,17 +255,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, justo 
             </div>
         </div>
     </div>
-</div>
-
-
-<hr>
-<div class="text-center center-block">
-    Copyright Kevin Prabhakar 2017
-    <br>
-    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-    <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
-    <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
 </div>
 
 

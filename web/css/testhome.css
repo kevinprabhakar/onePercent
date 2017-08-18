@@ -1,0 +1,158 @@
+.parallax {
+    /* The image used */
+    background-image: url("https://www.nationalparks.org/sites/default/files/styles/wide_2x/public/shutterstock_142351951.jpg?itok=4VSjqdM1&timestamp=1474998760");
+
+    /* Set a specific height */
+    height: 800px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+}
+
+#featuresList{
+    justify-content: flex-start;
+    align-items: strech;
+}
+
+.parallax2 {
+    /* The image used */
+    background-image: url("https://besantphotography.files.wordpress.com/2014/03/12824209565_9cf193b82e_o.jpg");
+
+    /* Set a specific height */
+    height: 800px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+}
+
+.parallax3 {
+    /* The image used */
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/06/Yosemite_USA.JPG");
+
+    /* Set a specific height */
+    height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.parallax4 {
+    /* The image used */
+    background-image: url("https://2sltl91mfmb53nr7sf3j0zxj-wpengine.netdna-ssl.com/wp-content/uploads/2017/02/YNP_HalfDome_SuperMoonrise_500mm_Pano_CROP_Web_2000x1035_rev1.jpg");
+
+    /* Set a specific height */
+    height: 900px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.FAQQuestion{
+    font-family: 'Saira Semi Condensed', sans-serif;
+    color: #f4b042;
+}
+
+.textWhite{
+    color: white;
+}
+
+.sanSerif{
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+#navBarLogo {
+    float: left;
+    margin-right: 5px;
+}
+
+#navBarLogoText {
+    color: #000000;
+}
+
+.nav-item {
+    color :#000;
+
+}
+
+#customNavBar{
+    margin-bottom: 0px;
+       background-color: #fff;
+
+
+}
+
+.bordered {
+width:100%;
+height:120%
+padding: 30px;
+border: 1px solid white;
+border-radius: 8px;
+}
+
+
+a {text-decoration:none;}      /* unvisited link */
+a:visited {text-decoration:none;}  /* visited link */
+a:hover {text-decoration:none;}  /* mouse over link */
+a:active {text-decoration:none;}  /* selected link */
+
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+.social {
+ -webkit-transform: scale(0.8);
+ /* Browser Variations: */
+
+ -moz-transform: scale(0.8);
+ -o-transform: scale(0.8);
+ -webkit-transition-duration: 0.5s;
+ -moz-transition-duration: 0.5s;
+ -o-transition-duration: 0.5s;
+}
+
+/*
+Multicoloured Hover Variations
+*/
+
+#social-fb:hover {
+ color: #3B5998;
+}
+#social-tw:hover {
+ color: #4099FF;
+}
+#social-gp:hover {
+ color: #d34836;
+}
+#social-em:hover {
+ color: #f39c12;
+}
+#signUpErrMessage{
+    display: inline;
+}
