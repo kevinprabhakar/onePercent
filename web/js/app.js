@@ -35,8 +35,7 @@ function DoGoal(uid){
         type: "POST",
         data: {"accessToken":api.readCookie("accessToken")},
         success: function(resp){
-            var response = JSON.parse(resp)
-            var goalId = response[0].Id
+            var goalId = resp[0].Id
             var actionText = $("#action").val()
             var feelingText = $("#feeling").val()
             var learningText = $("#learning").val()
