@@ -49,7 +49,7 @@ func (self *UserController)SignUp(params string)(*User, error){
 	err := userCollection.Find(bson.M{ "email": SignUpParams.Email}).One(&findUser)
 
 	if (err != mgo.ErrNotFound){
-		return nil, errors.New("EmailAlreadyExists")
+		return nil, err
 	}
 
 	passHash, err := util.HashPassword(SignUpParams.Password)
