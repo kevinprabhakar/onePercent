@@ -164,6 +164,20 @@ function ChangePassword(){
     })
 }
 
+function DeleteAccount(){
+    $.ajax({
+            url:"/api/deleteaccount",
+            type: "POST",
+            data: {"accessToken":api.readCookie("accessToken")},
+            success: function(resp){
+                window.location.replace("index.html")
+            },
+            error: function(error){
+                console.log(error.responseText)
+            }
+        })
+}
+
 $(document).ready(function(){
     if (api.readCookie("accessToken") != null){
         GetUser(api.readCookie("accessToken"))
@@ -193,6 +207,11 @@ $(document).ready(function(){
     $("#modalChangePasswordButton").on('click', function(event){
         event.preventDefault()
         ChangePassword()
+    })
+
+    $("#modalDeleteAccount").on('click', function(event){
+        event.preventDefault()
+        DeleteAccount()
     })
 
 
