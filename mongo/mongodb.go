@@ -2,12 +2,14 @@ package mongo
 
 import (
 	"gopkg.in/mgo.v2"
+	"os"
 )
 
 const DBname = "onePercent"
 
 func GetMongoSession() (*mgo.Session){
-	session, err := mgo.Dial("mongodb://localhost")
+	uri := os.Getenv("MONGODB_URI")
+	session, err := mgo.Dial(uri)
 
 	if (err != nil){
 		panic(err)
