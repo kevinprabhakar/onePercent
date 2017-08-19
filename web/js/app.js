@@ -44,7 +44,7 @@ function DoGoal(uid){
             var feelingText = $("#feeling").val()
             var learningText = $("#learning").val()
 
-//            SubmitPost(goalId, actionText, feelingText, learningText, uid)
+            SubmitPost(goalId, actionText, feelingText, learningText, uid)
         },
         error: function(error){
             console.log(error)
