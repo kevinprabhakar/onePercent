@@ -38,8 +38,8 @@ function DoGoal(uid){
         data: {"accessToken":api.readCookie("accessToken")},
         success: function(resp){
              console.log(resp)
-            var goal = JSON.parse(resp[0])
-            var goalId = goal.Id
+            var goal = JSON.parse(resp)
+            var goalId = goal[0].Id
             var actionText = $("#action").val()
             var feelingText = $("#feeling").val()
             var learningText = $("#learning").val()
