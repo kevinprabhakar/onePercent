@@ -145,7 +145,7 @@ $(document).ready(function(){
 
 //    if (validateLoginForm(email,password,passVerify)){
     $.ajax({
-            url: hostname+"/api/signup",
+            url: hostname+"/api/signup/",
             type: "POST",
             data: {"p":JSON.stringify(signUpData)},
             success: function(resp){
