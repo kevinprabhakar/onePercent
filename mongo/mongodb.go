@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-const DBname = "onePercent"
+const DBname = "heroku_8hrctnmg"
 
 func GetMongoSession() (*mgo.Session){
 	uri := os.Getenv("MONGODB_URI")
