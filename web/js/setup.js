@@ -54,6 +54,7 @@ function addCheckees(accessToken, emailList){
         data: {"accessToken":accessToken, "p":JSON.stringify(emailList)},
         success: function(resp){
             console.log(resp)
+            window.location.replace("app.html")
         },
         error: function(error){
             console.log(error)
@@ -66,7 +67,7 @@ function addGoal(createGoalData, emailListReal, accessToken){
         url:"/api/addgoal",
         type: "POST",
         data: {"accessToken":accessToken, "p":JSON.stringify(createGoalData)},
-        success: function(resp2){
+        success: function(resp){
             addCheckees(accessToken,emailListReal)
         },
         error: function(error){
@@ -150,7 +151,7 @@ $(document).ready(function(){
 	        window.location.replace("index.html")
 	    }
         verifyToken(accessToken, goalName, goalDescription, checkerList)
-        window.location.replace("app.html")
+
     })
 
 
