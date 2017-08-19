@@ -126,7 +126,8 @@ $(document).ready(function(){
 
   $("#modalSignUpButton").on('click', function(event){
 
-    var hostname = window.location.hostname
+
+    var hostname = window.location.href
 
     event.preventDefault()
     api.eraseCookie("accessToken")
