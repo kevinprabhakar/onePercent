@@ -139,9 +139,11 @@ $(document).ready(function(){
         "name" : name
     }
 
+    var urlReal = "http://" + window.location.hostname + "/api/signup"
+
 //    if (validateLoginForm(email,password,passVerify)){
     $.ajax({
-            url:"/api/signup/",
+            url:urlReal,
             type: "POST",
             data: {"p":JSON.stringify(signUpData)},
             success: function(resp){
