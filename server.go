@@ -251,6 +251,7 @@ func main(){
 			return
 		}
 
+		ServerLogger.Debug(jsonForm)
 		fmt.Fprintf(w,jsonForm)
 	})
 
