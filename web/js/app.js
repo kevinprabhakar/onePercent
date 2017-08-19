@@ -43,7 +43,7 @@ function DoGoal(uid){
 
             SubmitPost(goalId, actionText, feelingText, learningText, uid)
         }, error: function(error){
-            console.log(error.responseText)
+            console.log(error)
         }
     })
 }
