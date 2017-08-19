@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.go" afterPath="$PROJECT_DIR$/server.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/userController.go" afterPath="$PROJECT_DIR$/user/userController.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.html" afterPath="$PROJECT_DIR$/web/app.html" />
-    </list>
+    <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,7 +71,7 @@
       <file leaf-file-name="app.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
+            <state relative-caret-position="474">
               <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
               <folding>
                 <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -738,8 +734,8 @@
     <history-entry file="TestAccessTokenMessage_in_server_test_go - 2017.08.18 at 19h 07m 56s.xml">
       <configuration name="TestAccessTokenMessage in server_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestSendEmail_in_server_test_go - 2017.08.16 at 12h 37m 33s.xml">
-      <configuration name="TestSendEmail in server_test.go" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestAccessTokenMessage_in_server_test_go - 2017.08.19 at 00h 18m 35s.xml">
+      <configuration name="TestAccessTokenMessage in server_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
     <history-entry file="TestSendEmail_in_server_test_go - 2017.08.16 at 12h 37m 53s.xml">
       <configuration name="TestSendEmail in server_test.go" configurationId="GoTestRunConfiguration" />
@@ -1179,7 +1175,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
+        <state relative-caret-position="474">
           <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
           <folding>
             <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
