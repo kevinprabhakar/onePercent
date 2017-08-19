@@ -163,3 +163,38 @@ func (self *UserController)GetUsers(params string)(*[]User, error){
 
 	return &userList, nil
 }
+
+func(self *UserController)DeleteUser(uid bson.ObjectId)(error){
+	userCollection := mongo.GetUserCollection(mongo.GetDataBase(self.Session))
+	goalCollection := mongo.GetGoalCollection(mongo.GetDataBase(self.Session))
+	postCollection := mongo.GetPostCollection(mongo.GetDataBase(self.Session))
+
+	var findUser User
+	findUserErr := userCollection.Find(bson.M{"_id":uid}).One(&findUser)
+
+	if (findUserErr != nil){
+		return findUserErr
+	}
+
+	if (len(findUser.Goals)==0){
+		return errors.New("UserHasNoGoals")
+	}
+
+	removePostErr := postCollection.Remove(bson.M{"goal":bson.M{"$in" : findUser.Goals}})
+
+	if (removePostErr != nil){
+		return removePostErr
+	}
+
+	removeGoalsErr := goalCollection.Remove(bson.M{"_id":bson.M{"$in" : findUser.Goals}})
+	if (removeGoalsErr != nil){
+		return removeGoalsErr
+	}
+
+	removeUserErr := userCollection.Remove(bson.M{"_id":uid})
+	if (removeUserErr != nil){
+		return removeUserErr
+	}
+
+	return nil
+}

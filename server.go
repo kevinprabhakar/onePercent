@@ -449,6 +449,29 @@ func main(){
 
 	})
 
+	http.HandleFunc("/api/deleteaccount", func(w http.ResponseWriter, r *http.Request){
+		ServerLogger.Debug("Received Delete User Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+
+		addingUser, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get User from Access Token")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		deleteUserErr:= UserController.DeleteUser(addingUser.Id)
+		if (deleteUserErr != nil){
+			ServerLogger.ErrorMsg("Couldn't Delete User")
+			util.CustomError(w, deleteUserErr.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w,util.GetNoDataSuccessResponse())
+
+	})
+
 	http.Handle("/", http.FileServer(http.Dir("./web")))
 
 	http.ListenAndServe(":"+port, nil)

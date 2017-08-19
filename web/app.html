@@ -164,6 +164,14 @@
                             <button type='button' class='btn btn-default' id='addPartnerButton'>Add Accountability Partner</button>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Delete Account:
+                        </div>
+                        <div class="col-md-8" id="deleteAccount">
+                            <button type='button' class='btn btn-danger' id='deleteAccountButton'>Delete Account</button>
+                        </div>
+                    </div>
                 </h3>
                 <br>
                 <div class="row">
@@ -202,6 +210,26 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" id="modalChangePasswordButton">Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="deleteAccountLabel">WARNING</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <h1>Are you sure you want to delete your account?</h1>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-danger" id="modalDeleteAccount">Delete Account</button>
                             </div>
                         </div>
                     </div>
