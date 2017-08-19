@@ -109,8 +109,9 @@ func (self *NotifController)GetAndCheckUsers(midnight time.Time)(error){
 				if (findPostErr != nil) {
 					return findPostErr
 				}
+				lastDay := time.Now().Add(-1 * time.Microsecond)
 
-				lastDay := midnight.AddDate(0, 0, -1)
+				//lastDay := midnight.AddDate(0, 0, -1)
 
 				if (!userLastPost.Created.After(lastDay)) {
 					for _, checker := range user.CheckeeOf {
@@ -133,7 +134,7 @@ func (self *NotifController)CheckAndSend(){
 	for {
 		hour := time.Now().Hour()
 		self.Logger.Debug("Doing Notify Partners Time Check")
-		if (hour == 0){
+		if (hour == 6){
 			self.Logger.Debug("Notify Partners Time Check Validated")
 			midnight := time.Date(time.Now().Year(),time.Now().Month(),time.Now().Day(),0,0,0,0,time.Now().Location())
 			checkErr := self.GetAndCheckUsers(midnight)

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notif/notif.go" afterPath="$PROJECT_DIR$/notif/notif.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -61,7 +62,7 @@
       <file leaf-file-name="server.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="-1663">
               <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding>
                 <element signature="e#14#175#0" expanded="true" />
@@ -73,18 +74,18 @@
       <file leaf-file-name="notif.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notif/notif.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="302">
+              <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/index.js">
+      <file leaf-file-name="emailTemplate.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notif/emailTemplate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="149" column="18" lean-forward="true" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+            <state relative-caret-position="465">
+              <caret line="278" column="48" lean-forward="true" selection-start-line="278" selection-start-column="48" selection-end-line="278" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -204,7 +205,6 @@
         <option value="$PROJECT_DIR$/server_test.go" />
         <option value="$PROJECT_DIR$/web/message.html" />
         <option value="$PROJECT_DIR$/web/js/message.js" />
-        <option value="$PROJECT_DIR$/notif/emailTemplate.html" />
         <option value="$PROJECT_DIR$/web/js/moment.js" />
         <option value="$PROJECT_DIR$/web/js/dashboard.js" />
         <option value="$PROJECT_DIR$/goal/goal.go" />
@@ -217,6 +217,7 @@
         <option value="$PROJECT_DIR$/mongo/mongodb.go" />
         <option value="$PROJECT_DIR$/server.go" />
         <option value="$PROJECT_DIR$/web/js/app.js" />
+        <option value="$PROJECT_DIR$/notif/emailTemplate.html" />
         <option value="$PROJECT_DIR$/notif/notif.go" />
       </list>
     </option>
@@ -975,14 +976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notif/emailTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1287">
-          <caret line="270" column="40" lean-forward="true" selection-start-line="270" selection-start-column="40" selection-end-line="270" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/moment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1151,9 +1144,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/notif/emailTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="278" column="48" lean-forward="true" selection-start-line="278" selection-start-column="48" selection-end-line="278" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="-1663">
           <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
           <folding>
             <element signature="e#14#175#0" expanded="true" />
@@ -1163,8 +1164,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notif/notif.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="302">
+          <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
           <folding />
         </state>
       </provider>
