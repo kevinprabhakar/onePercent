@@ -62,18 +62,6 @@ function addCheckees(accessToken, emailList){
 }
 
 function addGoal(resp, goalName, goalDescription, emailList, accessToken){
-
-    var response = JSON.parse(resp)
-    var uid = response.userId
-
-    var createGoalData = {
-                "owner" : uid,
-                "name"  : goalName,
-                "description": goalDescription,
-                "created" : moment().unix(),
-                "updateBy" : moment().unix()
-            }
-
     $.ajax({
         url:"/api/addgoal",
         type: "POST",
@@ -97,7 +85,18 @@ function verifyToken(accessToken, goalName, goalDescription, emailList){
         type: "POST",
         data: {"accessToken":accessToken},
         success: function(resp){
-            addGoal(resp, goalName, goalDescription, emailList, accessToken)
+            var response = JSON.parse(resp)
+            var uid = response.userId
+
+            var createGoalData = {
+                "owner" : uid,
+                "name"  : goalName,
+                "description": goalDescription,
+                "created" : moment().unix(),
+                "updateBy" : moment().unix()
+            }
+
+            addGoal(createGoalData, emailList, accessToken)
         },
         error: function(error){
             console.log(error)
