@@ -104,7 +104,7 @@ function verifyToken(accessToken, goalName, goalDescription, emailList){
             //window.location.replace("http://www.google.com")
         },
         error: function(error){
-            console.log(error.responseText)
+            console.log(error)
         }
     })
 }
