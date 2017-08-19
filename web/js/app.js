@@ -22,7 +22,9 @@ function SubmitPost(Id, actionText, feelingText, learningText, uid){
         type: "POST",
         data: {"accessToken":api.readCookie("accessToken"),"p":JSON.stringify(params)},
         success: function(resp){
-            console.log(resp)
+            window.location.reload()
+            hideAll()
+            $("#dashboardPage").show();
         }, error: function(error){
             console.log(error.responseText)
         }
@@ -34,15 +36,14 @@ function DoGoal(uid){
         url: "/api/goal",
         type: "POST",
         data: {"accessToken":api.readCookie("accessToken")},
-        dataType: "json",
         success: function(resp){
              console.log(resp)
-//            var goal = JSON.parse(resp[0])
-//            var goalId = goal.Id
-//            var actionText = $("#action").val()
-//            var feelingText = $("#feeling").val()
-//            var learningText = $("#learning").val()
-//
+            var goal = JSON.parse(resp[0])
+            var goalId = goal.Id
+            var actionText = $("#action").val()
+            var feelingText = $("#feeling").val()
+            var learningText = $("#learning").val()
+
 //            SubmitPost(goalId, actionText, feelingText, learningText, uid)
         },
         error: function(error){
@@ -109,9 +110,7 @@ $(document).ready(function(){
     $("#submitPostButton").on('click',function(event){
         event.preventDefault
         GetGoalAndSubmitPost()
-        window.location.reload()
-        hideAll()
-        $("#dashboardPage").show();
+
 
     })
     $('a[href="#onePercentLink"]').click(function(){

@@ -83,8 +83,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+            <state relative-caret-position="308">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1151,8 +1151,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+        <state relative-caret-position="308">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
