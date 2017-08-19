@@ -61,14 +61,14 @@ function addCheckees(accessToken, emailList){
     })
 }
 
-function addGoal(accessToken, createGoalData){
+function addGoal(accessToken, createGoalData, emailListReal){
     $.ajax({
         url:"/api/addgoal",
         type: "POST",
         data: {"accessToken":accessToken, "p":JSON.stringify(createGoalData)},
         success: function(resp){
             console.log(resp)
-            //window.location.replace("http://www.google.com")
+            addCheckees(accessToken,emailListReal)
         },
         error: function(error){
             console.log(error)
@@ -97,11 +97,9 @@ function verifyToken(accessToken, goalName, goalDescription, emailList){
                 "checkerList" : emailList
             }
 
-            addGoal(accessToken, createGoalData)
-            addCheckees(accessToken,emailListReal)
+            addGoal(accessToken, createGoalData, emailListReal)
 
 
-            //window.location.replace("http://www.google.com")
         },
         error: function(error){
             console.log(error)
