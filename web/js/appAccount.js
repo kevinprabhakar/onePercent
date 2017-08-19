@@ -170,6 +170,7 @@ function DeleteAccount(){
             type: "POST",
             data: {"accessToken":api.readCookie("accessToken")},
             success: function(resp){
+                api.eraseCookie("accessToken")
                 window.location.replace("index.html")
             },
             error: function(error){
