@@ -6,8 +6,11 @@ function PopulatePage(){
         success: function(resp){
             var response = JSON.parse(resp)
 
-            if (response[0] == undefined){
+            console.log(response)
+
+            if (response == undefined){
                 window.location.replace("setup.html")
+                return
             }
 
             var goal = response[0].goal

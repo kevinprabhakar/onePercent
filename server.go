@@ -280,7 +280,6 @@ func main(){
 		}
 
 		fmt.Fprintf(w, jsonForm)
-
 	})
 
 	//accessToken: <accessToken from cookie>
