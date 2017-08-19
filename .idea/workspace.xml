@@ -73,8 +73,8 @@
       <file leaf-file-name="notif.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notif/notif.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="142" column="39" lean-forward="true" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+            <state relative-caret-position="469">
+              <caret line="134" column="33" lean-forward="true" selection-start-line="134" selection-start-column="33" selection-end-line="134" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -1163,8 +1163,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notif/notif.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="142" column="39" lean-forward="true" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+        <state relative-caret-position="469">
+          <caret line="134" column="33" lean-forward="true" selection-start-line="134" selection-start-column="33" selection-end-line="134" selection-end-column="33" />
           <folding />
         </state>
       </provider>

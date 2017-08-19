@@ -134,7 +134,7 @@ func (self *NotifController)CheckAndSend(){
 	for {
 		hour := time.Now().Hour()
 		self.Logger.Debug("Doing Notify Partners Time Check")
-		if (hour == 23){
+		if (hour == 6){
 			self.Logger.Debug("Notify Partners Time Check Validated")
 			midnight := time.Date(time.Now().Year(),time.Now().Month(),time.Now().Day(),0,0,0,0,time.Now().Location())
 			checkErr := self.GetAndCheckUsers(midnight)
