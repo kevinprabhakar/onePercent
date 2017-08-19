@@ -4,10 +4,7 @@ function PopulatePage(){
         type: "POST",
         data: {"accessToken":api.readCookie("accessToken")},
         success: function(resp){
-            console.log(resp)
             var response = JSON.parse(resp)
-
-            console.log(response)
 
             if (response == undefined){
                 window.location.replace("setup.html")

@@ -56,7 +56,7 @@ function addCheckees(accessToken, emailList){
             console.log(resp)
         },
         error: function(error){
-            console.log(error.responseText)
+            console.log(error)
         }
     })
 }
@@ -71,7 +71,7 @@ function addGoal(accessToken, createGoalData){
             //window.location.replace("http://www.google.com")
         },
         error: function(error){
-            console.log(error.responseText)
+            console.log(error)
         }
     })
 }
