@@ -61,7 +61,7 @@ function addCheckees(accessToken, emailList){
     })
 }
 
-function addGoal(resp, goalName, goalDescription, emailList, accessToken){
+function addGoal(createGoalData, emailList, accessToken){
     $.ajax({
         url:"/api/addgoal",
         type: "POST",
