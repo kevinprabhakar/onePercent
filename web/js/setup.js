@@ -61,7 +61,7 @@ function addCheckees(accessToken, emailList){
     })
 }
 
-function addGoal(resp){
+function addGoal(resp, goalName, goalDescription, emailList, accessToken){
     var response = JSON.parse(resp)
     var uid = response.userId
 
@@ -97,7 +97,7 @@ function verifyToken(accessToken, goalName, goalDescription, emailList){
         type: "POST",
         data: {"accessToken":accessToken},
         success: function(resp){
-            addGoal(resp)
+            addGoal(resp, goalName, goalDescription, emailList, accessToken)
         },
         error: function(error){
             console.log(error)
