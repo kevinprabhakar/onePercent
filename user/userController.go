@@ -180,13 +180,13 @@ func(self *UserController)DeleteUser(uid bson.ObjectId)(error){
 		return errors.New("UserHasNoGoals")
 	}
 
-	removePostErr := postCollection.Remove(bson.M{"goal":bson.M{"$in" : findUser.Goals}})
+	removePostErr := postCollection.Remove(bson.M{"owner":uid})
 
 	if (removePostErr != nil){
 		return removePostErr
 	}
 
-	removeGoalsErr := goalCollection.Remove(bson.M{"_id":bson.M{"$in" : findUser.Goals}})
+	removeGoalsErr := goalCollection.Remove(bson.M{"owner":uid})
 	if (removeGoalsErr != nil){
 		return removeGoalsErr
 	}
