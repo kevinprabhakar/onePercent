@@ -125,6 +125,9 @@ $(document).ready(function(){
   })
 
   $("#modalSignUpButton").on('click', function(event){
+
+    var hostname = window.location.hostname
+
     event.preventDefault()
     api.eraseCookie("accessToken")
     var email = $("#email").val()
@@ -141,7 +144,7 @@ $(document).ready(function(){
 
 //    if (validateLoginForm(email,password,passVerify)){
     $.ajax({
-            url:"/api/signup",
+            url: hostname+"/api/signup",
             type: "POST",
             data: {"p":JSON.stringify(signUpData)},
             success: function(resp){
