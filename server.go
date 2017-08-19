@@ -13,6 +13,8 @@ import(
 	"onePercent/notif"
 )
 
+var port = os.Getenv("PORT")
+
 var MongoSession = mongo.GetMongoSession()
 var ServerLogger = util.NewLogger(ioutil.Discard, os.Stdout, os.Stdout, os.Stderr)
 var UserController = user.NewUserController(MongoSession, ServerLogger)
@@ -20,15 +22,6 @@ var GoalController = goal.NewGoalController(MongoSession, ServerLogger)
 var NotifController = notif.NewNotifController(MongoSession, ServerLogger)
 
 
-func GetPort() string {
-	var port = os.Getenv("PORT")
-	// Set a default port if there is nothing in the environment
-	if port == "" {
-		port = "3000"
-		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
-	}
-	return ":" + port
-}
 
 func main(){
 	go NotifController.CheckAndSend()
@@ -452,7 +445,7 @@ func main(){
 
 	})
 
-	//http.Handle("/", http.FileServer(http.Dir("./web")))
+	http.Handle("/", http.FileServer(http.Dir("./web")))
 
-	http.ListenAndServe(GetPort(), nil)
+	http.ListenAndServe(":"+port, nil)
 }
