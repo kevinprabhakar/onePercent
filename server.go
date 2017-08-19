@@ -452,7 +452,7 @@ func main(){
 
 	})
 
-	http.Handle("/", http.FileServer(http.Dir("./web")))
+	//http.Handle("/", http.FileServer(http.Dir("./web")))
 
 	http.ListenAndServe(GetPort(), nil)
 }
