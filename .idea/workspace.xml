@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/app.js" afterPath="$PROJECT_DIR$/web/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.go" afterPath="$PROJECT_DIR$/server.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="250" column="18" lean-forward="true" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+            <state relative-caret-position="393">
+              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
               <folding>
                 <element signature="e#14#175#0" expanded="true" />
               </folding>
@@ -80,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="248">
+              <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -159,9 +159,9 @@
       <find>addpost</find>
       <find>goal</find>
       <find>/api/signup</find>
-      <find>console.log</find>
       <find>/goal</find>
       <find>add</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>util.GetStringJson</replace>
@@ -216,8 +216,8 @@
         <option value="$PROJECT_DIR$/web/js/index.js" />
         <option value="$PROJECT_DIR$/user/userController.go" />
         <option value="$PROJECT_DIR$/mongo/mongodb.go" />
-        <option value="$PROJECT_DIR$/server.go" />
         <option value="$PROJECT_DIR$/web/js/app.js" />
+        <option value="$PROJECT_DIR$/server.go" />
       </list>
     </option>
   </component>
@@ -1107,16 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="250" column="18" lean-forward="true" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
-          <folding>
-            <element signature="e#14#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/old/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2438">
@@ -1151,9 +1141,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="248">
+          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#175#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
