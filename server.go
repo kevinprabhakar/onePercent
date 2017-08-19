@@ -247,6 +247,7 @@ func main(){
 			util.CustomError(w, jsonErr.Error(),400)
 			return
 		}
+		ServerLogger.Debug(jsonForm)
 		fmt.Fprintf(w,jsonForm)
 	})
 
