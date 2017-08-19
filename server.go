@@ -241,7 +241,10 @@ func main(){
 			return
 		}
 
-		jsonForm, jsonErr := util.GetStringJson(goalList)
+		goalsMap := make(map[string][]goal.Goal)
+		goalsMap["goals"]=*goalList
+
+		jsonForm, jsonErr := util.GetStringJson(goalsMap)
 		if (jsonErr != nil){
 			ServerLogger.ErrorMsg("Couldn't get server messages")
 			util.CustomError(w, jsonErr.Error(),400)

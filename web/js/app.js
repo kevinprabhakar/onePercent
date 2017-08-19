@@ -43,7 +43,8 @@ function DoGoal(uid){
 //            var learningText = $("#learning").val()
 //
 //            SubmitPost(goalId, actionText, feelingText, learningText, uid)
-        }, error: function(error){
+        },
+        error: function(error){
             console.log(error)
         }
     })
