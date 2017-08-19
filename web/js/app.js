@@ -34,6 +34,7 @@ function DoGoal(uid){
         url: "/api/goal",
         type: "POST",
         data: {"accessToken":api.readCookie("accessToken")},
+        dataType: "json",
         success: function(resp){
              console.log(resp)
 //            var goal = JSON.parse(resp[0])
