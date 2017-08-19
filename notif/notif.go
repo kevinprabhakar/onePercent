@@ -56,7 +56,7 @@ func (self *NotifController)SendEmail(email string, name string, userName string
 		return err
 	}
 
-	urlLink := "http://localhost:3000/message.html?messageAccessToken="+token
+	urlLink := "https://pure-fortress-74878.herokuapp.com/message.html?messageAccessToken="+token
 
 	newTemplate := EmailTemplateData{UserName:userName,PartnerName:name,MessageURL:urlLink}
 
