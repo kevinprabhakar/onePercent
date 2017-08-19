@@ -221,6 +221,7 @@ func main(){
 
 		addingUser, err := UserController.GetCurrUser(accessToken)
 		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't get user")
 			util.CustomError(w, err.Error(),400)
 			return
 		}
@@ -242,6 +243,7 @@ func main(){
 
 		jsonForm, jsonErr := util.GetStringJson(goalList)
 		if (jsonErr != nil){
+			ServerLogger.ErrorMsg("Couldn't get server messages")
 			util.CustomError(w, jsonErr.Error(),400)
 			return
 		}
