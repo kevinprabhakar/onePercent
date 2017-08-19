@@ -139,7 +139,7 @@ $(document).ready(function(){
         "name" : name
     }
 
-    var urlReal = "http://" + window.location.hostname + "/api/signup"
+    var urlReal = "https://" + window.location.hostname + "/api/signup"
 
 //    if (validateLoginForm(email,password,passVerify)){
     $.ajax({
