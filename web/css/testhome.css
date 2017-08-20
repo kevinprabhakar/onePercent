@@ -60,7 +60,7 @@
     background-image: url("https://2sltl91mfmb53nr7sf3j0zxj-wpengine.netdna-ssl.com/wp-content/uploads/2017/02/YNP_HalfDome_SuperMoonrise_500mm_Pano_CROP_Web_2000x1035_rev1.jpg");
 
     /* Set a specific height */
-    height: 900px;
+    height: 600px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
