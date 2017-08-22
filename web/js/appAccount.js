@@ -19,6 +19,7 @@ function GetUser(accessToken){
                 type: "POST",
                 data: {"accessToken":accessToken,"p":JSON.stringify(uidListReal)},
                 success: function(resp){
+                    console.log(resp)
                     var response = JSON.parse(resp)
 
                     var userName = response[0].Name
