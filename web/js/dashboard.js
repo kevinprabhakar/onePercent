@@ -77,6 +77,5 @@ function GetStreak(){
 $(document).ready(function(){
     //THIS FUNCTION MUST BE EDITED FOR MULTIPLE GOALS
     PopulatePage()
-
-
+    GetStreak()
 })
