@@ -12,13 +12,17 @@ type Checker struct{
 }
 
 type User struct {
-	Id				bson.ObjectId		`bson:"_id"`
-	Name 			string 				`bson:"name"`
-	PassHash 		string 				`bson:"passHash"`
-	Goals 			[]bson.ObjectId 	`bson:"goals"`
-	CheckerOf		[]bson.ObjectId 	`bson:"checkerOf"`
-	CheckeeOf		[]Checker			`bson:"checkeeOf"`
-	Email 			string				`bson:"email"`
+	Id				bson.ObjectId		`bson:"_id" json:"id"`
+	Name 			string 				`bson:"name" json:"name"`
+	PassHash 		string 				`bson:"passHash" json:"passHash"`
+	Goals 			[]bson.ObjectId 	`bson:"goals" json:"goals"`
+	CheckerOf		[]bson.ObjectId 	`bson:"checkerOf" json:"checkerOf"`
+	CheckeeOf		[]Checker			`bson:"checkeeOf" json:"checkeeOf"`
+	Email 			string				`bson:"email" json:"email"`
+	LongConsecWin	int					`bson:"longConsecWin" json:"longConsecWin"`
+	CurrConsecWin 	int 				`bson:"currConsecWin" json:"currConsecWin"`
+	LongConsecLose	int 				`bson:"longConsecLose" json:"currConsecLose"`
+	CurrConsecLose	int 				`bson:"currConsecLose" json:"currConsecLose"`
 }
 
 type UserSignUpParams struct {

@@ -15,12 +15,11 @@ import(
 
 var port = os.Getenv("PORT")
 
-var MongoSession = mongo.GetMongoSession()
+var MongoSession = mongo.GetMongoSession(true)
 var ServerLogger = util.NewLogger(ioutil.Discard, os.Stdout, os.Stdout, os.Stderr)
 var UserController = user.NewUserController(MongoSession, ServerLogger)
 var GoalController = goal.NewGoalController(MongoSession, ServerLogger)
 var NotifController = notif.NewNotifController(MongoSession, ServerLogger)
-
 
 
 func main(){
@@ -469,6 +468,44 @@ func main(){
 
 		fmt.Fprintf(w,util.GetNoDataSuccessResponse())
 
+	})
+
+	http.HandleFunc("/api/getwinstreak", func(w http.ResponseWriter, r *http.Request) {
+		ServerLogger.Debug("Received Win Streak Request")
+		r.ParseForm()
+		accessToken := r.Form.Get("accessToken")
+		goalId := r.Form.Get("goalId")
+
+		_, err := UserController.GetCurrUser(accessToken)
+		if (err != nil){
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		allPosts, allPostsErr := GoalController.GetAllPosts(goalId)
+		if (allPostsErr != nil){
+			ServerLogger.ErrorMsg("Couldn't Get Posts for Goal Id")
+			util.CustomError(w, allPostsErr.Error(),400)
+			return
+		}
+
+		longW, currW, err := NotifController.GetStreakStats(allPosts)
+		if (err != nil){
+			ServerLogger.ErrorMsg("Couldn't Get Streak Stats")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		returnColl := goal.StreakReturn{longW,currW}
+		jsonFrom, jsonErr := util.GetStringJson(returnColl)
+
+		if (jsonErr != nil){
+			ServerLogger.ErrorMsg("Couldn't Marshall JSON")
+			util.CustomError(w, err.Error(),400)
+			return
+		}
+
+		fmt.Fprintf(w, jsonFrom)
 	})
 
 	http.Handle("/", http.FileServer(http.Dir("./web")))

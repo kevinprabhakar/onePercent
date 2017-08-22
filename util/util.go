@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func IsValidEmail(email string) (bool) {
@@ -47,4 +48,11 @@ func CustomError(w http.ResponseWriter, error string, code int){
 	w.Header().Set("X-Content-Type-Options", "nosniff")
 	w.WriteHeader(code)
 	fmt.Fprintf(w, error)
+}
+
+func CheckSameDate(time1 time.Time, time2 time.Time)(bool){
+	if (time1.Year()==time2.Year())&&(time1.Month()==time2.Month())&&(time1.Day()==time2.Day()){
+		return true;
+	}
+	return false
 }

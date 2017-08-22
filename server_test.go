@@ -13,7 +13,6 @@ import (
 	"onePercent/mongo"
 	"onePercent/post"
 	"onePercent/util"
-	//"onePercent/notif"
 	"onePercent/notif"
 )
 
@@ -344,4 +343,37 @@ func TestAccessTokenMessage(t *testing.T){
 	}
 
 	fmt.Println(a + " " + b)
+}
+
+
+func TestConsecWinsForward(t *testing.T){
+	slice := make([]post.Post,0)
+
+	for i:=0;i<100;i++{
+		if (i % 10 == 0){
+			slice = append(slice, post.Post{
+				bson.NewObjectId(),
+				"",
+				"",
+				"",
+				bson.NewObjectId(),
+				bson.NewObjectId(),
+				time.Now().AddDate(0,0,8),
+			})
+		}else{
+			slice = append(slice, post.Post{
+				bson.NewObjectId(),
+				"",
+				"",
+				"",
+				bson.NewObjectId(),
+				bson.NewObjectId(),
+				time.Now().AddDate(0,0,i),
+			})
+		}
+
+	}
+
+	a,b,_ := NotifController.GetStreakStats(slice)
+	fmt.Println(a,b)
 }

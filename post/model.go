@@ -6,13 +6,13 @@ import (
 )
 
 type Post struct {
-	Id 			bson.ObjectId 		`bson:"_id"`
-	Action 		string 				`bson:"action"`
-	Feeling 	string 				`bson:"feeling"`
-	Learning 	string 				`bson:"learning"`
-	Owner 		bson.ObjectId 		`bson:"owner"`
-	Goal 		bson.ObjectId		`bson:"goal"`
-	Created 	time.Time 			`bson:"created"`
+	Id 			bson.ObjectId 		`bson:"_id" json:"id"`
+	Action 		string 				`bson:"action" json:"action"`
+	Feeling 	string 				`bson:"feeling" json:"feeling"`
+	Learning 	string 				`bson:"learning" json:"learning"`
+	Owner 		bson.ObjectId 		`bson:"owner" json:"owner"`
+	Goal 		bson.ObjectId		`bson:"goal" json:"goal"`
+	Created 	time.Time 			`bson:"created" json:"created"`
 }
 
 type PostCreateParams struct {

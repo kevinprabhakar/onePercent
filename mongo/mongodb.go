@@ -7,15 +7,25 @@ import (
 
 const DBname = "heroku_8hrctnmg"
 
-func GetMongoSession() (*mgo.Session){
-	uri := os.Getenv("MONGODB_URI")
-	session, err := mgo.Dial(uri)
+func GetMongoSession(debug bool) (*mgo.Session){
+	if (debug){
+		uri := os.Getenv("MONGODB_URI")
+		session, err := mgo.Dial(uri)
 
-	if (err != nil){
-		panic(err)
+		if (err != nil){
+			panic(err)
+		}
+		return session
+	}else{
+		uri := ("mongodb://localhost:27017/onePercent")
+		session, err := mgo.Dial(uri)
+
+		if (err != nil){
+			panic(err)
+		}
+		return session
 	}
 
-	return session
 }
 
 func GetDataBase(session *mgo.Session) *mgo.Database{

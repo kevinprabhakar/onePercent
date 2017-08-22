@@ -65,6 +65,10 @@ func (self *UserController)SignUp(params string)(*User, error){
 		CheckerOf	: []bson.ObjectId{},
 		CheckeeOf   : []Checker{},
 		Email 		: html.EscapeString(SignUpParams.Email),
+		CurrConsecLose: 0,
+		CurrConsecWin: 0,
+		LongConsecLose: 0,
+		LongConsecWin: 0,
 	}
 
 	insertErr := userCollection.Insert(newUser)

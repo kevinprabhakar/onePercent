@@ -98,6 +98,22 @@ func (self *GoalController)AddPost(params string)(*post.Post, error){
 	}
 
 	return &insertPost, nil
-
-
 }
+
+func (self *GoalController)GetAllPosts(goalId string)(*[]post.Post, error){
+	if (!bson.IsObjectIdHex(goalId)){
+		return nil, errors.New("InvalidBSONId")
+	}
+	postCollection := mongo.GetPostCollection(mongo.GetDataBase(self.Session))
+
+	var postList []post.Post
+
+	findErr := postCollection.Find(bson.M{"goal":bson.ObjectIdHex(goalId)}).Sort("-created").All(&postList)
+
+	if (findErr != nil){
+		return nil, findErr
+	}
+
+	return &postList, nil
+}
+

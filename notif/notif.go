@@ -181,3 +181,43 @@ func (self *NotifController)SendUserEmail(fromEmail string, toEmail string, mess
 	}
 	return nil
 }
+
+func GetConsecWinsForward(index int, compareTime time.Time, postSlice []post.Post)(int){
+	if (index+1 == len(postSlice))||(!util.CheckSameDate(compareTime,postSlice[index].Created)){
+		return index
+	}
+	return GetConsecWinsForward(index+1, compareTime.AddDate(0,0,1),postSlice)
+}
+
+func GetConsecWinsBackward(index int, compareTime time.Time, postSlice []post.Post)(int){
+	if (index == 0)||(!util.CheckSameDate(compareTime,postSlice[index].Created)){
+		return (len(postSlice)-index-1)
+	}
+	return GetConsecWinsBackward(index-1, compareTime.AddDate(0,0,-1),postSlice)
+}
+
+
+
+
+func (self *NotifController)GetStreakStats(postList []post.Post)(int, int, error){
+	var longW, currW= 0,0
+
+	if (len(postList)==0){
+		return longW,currW,errors.New("Post Slice Empty")
+	}
+
+	currW = GetConsecWinsBackward(len(postList)-1, postList[len(postList)-1].Created, postList)
+
+	index := 0
+	for (index < len(postList)){
+		indexPush := GetConsecWinsForward(index,postList[index].Created,postList)
+
+		if (longW < (indexPush-index+1)){
+			longW = (indexPush-index+1)
+		}
+
+		index += indexPush-index+1
+	}
+
+	return longW,currW,nil
+}
