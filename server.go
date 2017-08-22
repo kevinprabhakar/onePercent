@@ -489,7 +489,7 @@ func main(){
 			return
 		}
 
-		longW, currW, err := NotifController.GetStreakStats(&allPosts)
+		longW, currW, err := NotifController.GetStreakStats(*allPosts)
 		if (err != nil){
 			ServerLogger.ErrorMsg("Couldn't Get Streak Stats")
 			util.CustomError(w, err.Error(),400)
