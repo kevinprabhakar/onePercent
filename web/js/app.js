@@ -39,7 +39,7 @@ function DoGoal(uid){
         success: function(resp){
              console.log(resp)
             var goal = JSON.parse(resp)
-            var goalId = goal[0].Id
+            var goalId = goal[0].id
             var actionText = $("#action").val()
             var feelingText = $("#feeling").val()
             var learningText = $("#learning").val()
