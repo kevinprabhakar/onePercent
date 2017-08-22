@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/dashboard.js" afterPath="$PROJECT_DIR$/web/js/dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.html" afterPath="$PROJECT_DIR$/web/app.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="app.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="260" column="26" lean-forward="true" selection-start-line="260" selection-start-column="26" selection-end-line="260" selection-end-column="26" />
+            <state relative-caret-position="328">
+              <caret line="257" column="47" lean-forward="false" selection-start-line="257" selection-start-column="47" selection-end-line="257" selection-end-column="47" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -220,10 +220,10 @@
         <option value="$PROJECT_DIR$/server_test.go" />
         <option value="$PROJECT_DIR$/goal/goal.go" />
         <option value="$PROJECT_DIR$/goal/model.go" />
-        <option value="$PROJECT_DIR$/web/app.html" />
         <option value="$PROJECT_DIR$/server.go" />
         <option value="$PROJECT_DIR$/web/js/appAccount.js" />
         <option value="$PROJECT_DIR$/web/js/dashboard.js" />
+        <option value="$PROJECT_DIR$/web/app.html" />
       </list>
     </option>
   </component>
@@ -1250,8 +1250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="260" column="26" lean-forward="true" selection-start-line="260" selection-start-column="26" selection-end-line="260" selection-end-column="26" />
+        <state relative-caret-position="328">
+          <caret line="257" column="47" lean-forward="false" selection-start-line="257" selection-start-column="47" selection-end-line="257" selection-end-column="47" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
