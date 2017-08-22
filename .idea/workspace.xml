@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa5840f3-a69a-4fd2-9e10-703323ed4e8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/goal/goal.go" afterPath="$PROJECT_DIR$/goal/goal.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/goal/model.go" afterPath="$PROJECT_DIR$/goal/model.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo/mongodb.go" afterPath="$PROJECT_DIR$/mongo/mongodb.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notif/notif.go" afterPath="$PROJECT_DIR$/notif/notif.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/post/model.go" afterPath="$PROJECT_DIR$/post/model.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.go" afterPath="$PROJECT_DIR$/server.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server_test.go" afterPath="$PROJECT_DIR$/server_test.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/currUserController.go" afterPath="$PROJECT_DIR$/user/currUserController.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/model.go" afterPath="$PROJECT_DIR$/user/model.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/userController.go" afterPath="$PROJECT_DIR$/user/userController.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/util.go" afterPath="$PROJECT_DIR$/util/util.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.html" afterPath="$PROJECT_DIR$/web/app.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="140">
               <caret line="258" column="42" lean-forward="false" selection-start-line="258" selection-start-column="42" selection-end-line="258" selection-end-column="42" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -101,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="491" column="54" lean-forward="false" selection-start-line="491" selection-start-column="54" selection-end-line="491" selection-end-column="54" />
+            <state relative-caret-position="330">
+              <caret line="492" column="24" lean-forward="true" selection-start-line="492" selection-start-column="24" selection-end-line="492" selection-end-column="24" />
               <folding>
                 <element signature="e#14#175#0" expanded="true" />
               </folding>
@@ -239,8 +228,8 @@
         <option value="$PROJECT_DIR$/server_test.go" />
         <option value="$PROJECT_DIR$/goal/goal.go" />
         <option value="$PROJECT_DIR$/goal/model.go" />
-        <option value="$PROJECT_DIR$/server.go" />
         <option value="$PROJECT_DIR$/web/app.html" />
+        <option value="$PROJECT_DIR$/server.go" />
       </list>
     </option>
   </component>
@@ -1247,16 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="491" column="54" lean-forward="false" selection-start-line="491" selection-start-column="54" selection-end-line="491" selection-end-column="54" />
-          <folding>
-            <element signature="e#14#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notif/notif.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -1267,12 +1246,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="140">
           <caret line="258" column="42" lean-forward="false" selection-start-line="258" selection-start-column="42" selection-end-line="258" selection-end-column="42" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="492" column="24" lean-forward="true" selection-start-line="492" selection-start-column="24" selection-end-line="492" selection-end-column="24" />
+          <folding>
+            <element signature="e#14#175#0" expanded="true" />
           </folding>
         </state>
       </provider>
