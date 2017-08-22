@@ -60,8 +60,8 @@ function GetStreak(){
                 data:{"accessToken":api.readCookie("accessToken"),"goalId":goalId},
                 success:function(resp){
                     var response = JSON.parse(resp)
-                    $("#longW").text("Longest Streak: " + resp.longW)
-                    $("#currW").text("Current Streak: " + resp.currW)
+                    $("#longW").text("Longest Streak: " + response.longW)
+                    $("#currW").text("Current Streak: " + response.currW)
                 },
                 error: function(error){
 
