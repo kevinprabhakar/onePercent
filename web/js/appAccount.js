@@ -22,9 +22,9 @@ function GetUser(accessToken){
                     console.log(resp)
                     var response = JSON.parse(resp)
 
-                    var userName = response[0].Name
-                    var userEmail = response[0].Email
-                    var userCheckers = response[0].CheckeeOf
+                    var userName = response[0].name
+                    var userEmail = response[0].email
+                    var userCheckers = response[0].checkeeOf
 
 
                     $("#currUserName").text(userName)
