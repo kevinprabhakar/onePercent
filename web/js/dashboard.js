@@ -12,8 +12,8 @@ function PopulatePage(){
             }
 
             var goal = response[0].goal
-            var goalName = goal.Name
-            var goalDescription = goal.Description
+            var goalName = goal.name
+            var goalDescription = goal.description
 
             $("#goalName").text(goalName)
             $("#goalDescription").text(goalDescription)
