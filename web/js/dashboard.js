@@ -24,10 +24,10 @@ function PopulatePage(){
                 for (i = postList.length-1; i>=0; i--){
                     var s =
                     `<tr>
-                        <td>${moment(postList[i].Created).format("MM/DD/YYYY hh:mm A")}</td>
-                        <td>${postList[i].Action}</td>
-                        <td>${postList[i].Feeling}</td>
-                        <td>${postList[i].Learning}</td>
+                        <td>${moment(postList[i].created).format("MM/DD/YYYY hh:mm A")}</td>
+                        <td>${postList[i].action}</td>
+                        <td>${postList[i].feeling}</td>
+                        <td>${postList[i].learning}</td>
                     </tr>`
                     $("#historyTableBody").append(s)
                 }
