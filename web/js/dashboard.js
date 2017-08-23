@@ -32,7 +32,7 @@ function PopulatePage(){
                     $("#historyTableBody").append(s)
                 }
 
-                if (moment(postList[postList.length-1].Created).format("MM/DD/YYYY")==moment().utcOffset(-8).format("MM/DD/YYYY").){
+                if (moment(postList[postList.length-1].Created).format("MM/DD/YYYY")==moment().utcOffset(-8).format("MM/DD/YYYY"){
                     $('a[href="#onePercentLink"]').hide();
                 }
             }
