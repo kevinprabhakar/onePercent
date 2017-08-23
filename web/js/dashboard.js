@@ -33,8 +33,7 @@ function PopulatePage(){
                 }
 
                 if (moment(postList[postList.length-1].Created).format("MM/DD/YYYY")==moment().format("MM/DD/YYYY")){
-                    //$('a[href="#onePercentLink"]').hide();
-                    $('a[href="#onePercentLink"]').text(moment().format())
+                    $('a[href="#onePercentLink"]').hide();
                 }
             }
             $('#forDataTable').DataTable( {
