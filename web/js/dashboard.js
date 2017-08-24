@@ -32,10 +32,10 @@ function PopulatePage(){
                     $("#historyTableBody").append(s)
                 }
 
-                if (moment(postList[postList.length-1].Created).format("MM/DD/YYYY")==moment().format("MM/DD/YYYY")){
-                    console.log(postList[postList.length-1].Created)
-                    console.log(moment(postList[postList.length-1].Created))
-                    console.log(moment())
+                if (moment(postList[postList.length-1].created).format("MM/DD/YYYY")==moment().format("MM/DD/YYYY")){
+//                    console.log(postList[postList.length-1].Created)
+//                    console.log(moment(postList[postList.length-1].Created))
+//                    console.log(moment())
                     $('a[href="#onePercentLink"]').hide();
                 }
             }
