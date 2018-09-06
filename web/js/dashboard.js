@@ -33,9 +33,6 @@ function PopulatePage(){
                 }
 
                 if (moment(postList[postList.length-1].created).format("MM/DD/YYYY")==moment().format("MM/DD/YYYY")){
-//                    console.log(postList[postList.length-1].Created)
-//                    console.log(moment(postList[postList.length-1].Created))
-//                    console.log(moment())
                     $('a[href="#onePercentLink"]').hide();
                 }
             }

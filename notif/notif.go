@@ -67,7 +67,7 @@ func (self *NotifController)SendEmail(email string, name string, userName string
 
 	m.SetBody("text/html", sendingMessage)
 
-	d := gomail.NewPlainDialer("smtp.gmail.com", 465, "one.percent.emailer@gmail.com", "Heb1Pet!")
+	d := gomail.NewPlainDialer("smtp.gmail.com", 465, "youremailhere@gmail.com", "password")
 
 	if err := d.DialAndSend(m); err != nil {
 		return err
